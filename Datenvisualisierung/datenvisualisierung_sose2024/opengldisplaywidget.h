@@ -52,7 +52,7 @@ private:
     // ========================
     FlowDataSource *flowdatasource;
     CartesianGridToHorizontalSliceFilter *sliceFilter;
-    HorizontalSliceToImageMapper *imageMapper;
+    HorizontalSliceToImageMapper *sliceMapper;
     HorizontalContourLinesRenderer *contourRenderer;
     HorizontalSliceToContourLineMapper *contourMapper;
     DataVolumeBoundingBoxRenderer *bboxRenderer;

@@ -26,9 +26,11 @@ OpenGLDisplayWidget::~OpenGLDisplayWidget()
     // Clean up visualization pipeline.
     delete bboxRenderer;
     delete sliceRenderer;
-    delete mapper;
+    delete sliceMapper;
     delete flowdatasource;
     delete sliceFilter;
+    delete contourRenderer;
+    delete contourMapper;
 
 }
 
@@ -160,8 +162,8 @@ void OpenGLDisplayWidget::keyPressEvent(QKeyEvent *e)
         if(sliceFilter->getSlice()<15)
         {
          sliceFilter->moveSlice(1);
-         mapper->increaseZPosition(1);
-         mapper->setDataSlice(sliceFilter->transferDataToMapper(16,16), 16,16);
+         sliceMapper->increaseZPosition(1);
+         sliceMapper->setDataSlice(sliceFilter->transferDataToMapper(16,16), 16,16);
 
         }
 
@@ -171,8 +173,8 @@ void OpenGLDisplayWidget::keyPressEvent(QKeyEvent *e)
         if(sliceFilter->getSlice()>0)
         {
             sliceFilter->moveSlice(-1);
-            mapper->increaseZPosition(-1);
-            mapper->setDataSlice(sliceFilter->transferDataToMapper(16,16), 16,16);
+            sliceMapper->increaseZPosition(-1);
+            sliceMapper->setDataSlice(sliceFilter->transferDataToMapper(16,16), 16,16);
 
         }
 
@@ -182,7 +184,7 @@ void OpenGLDisplayWidget::keyPressEvent(QKeyEvent *e)
         if(sliceFilter->getCurrentWindComponent() != 0)
         {
             sliceFilter->changeWindComponent(0);
-            mapper->setDataSlice(sliceFilter->transferDataToMapper(16,16), 16,16);
+            sliceMapper->setDataSlice(sliceFilter->transferDataToMapper(16,16), 16,16);
         }
 
     }
@@ -191,7 +193,7 @@ void OpenGLDisplayWidget::keyPressEvent(QKeyEvent *e)
         if(sliceFilter->getCurrentWindComponent() != 1)
         {
             sliceFilter->changeWindComponent(1);
-            mapper->setDataSlice(sliceFilter->transferDataToMapper(16,16), 16,16);
+            sliceMapper->setDataSlice(sliceFilter->transferDataToMapper(16,16), 16,16);
         }
 
     }
@@ -200,14 +202,14 @@ void OpenGLDisplayWidget::keyPressEvent(QKeyEvent *e)
         if(sliceFilter->getCurrentWindComponent() != 2)
         {
             sliceFilter->changeWindComponent(2);
-            mapper->setDataSlice(sliceFilter->transferDataToMapper(16,16), 16,16);
+            sliceMapper->setDataSlice(sliceFilter->transferDataToMapper(16,16), 16,16);
 
         }
 
     }
     else if(e->key() == Qt::Key_M)
     {
-       mapper->setMagnitude(sliceFilter->transferMagnitudeOfCurrentSliceToMapper(16,16));
+       sliceMapper->setMagnitude(sliceFilter->transferMagnitudeOfCurrentSliceToMapper(16,16));
 
     }
 
@@ -251,10 +253,10 @@ void OpenGLDisplayWidget::initVisualizationPipeline()
 
 
     // Initialize mapper modules.
-    imageMapper = new HorizontalSliceToImageMapper();
-    imageMapper->setDataSlice(sliceFilter->transferDataToMapper(16,16), 16,16);
-    imageMapper->setMagnitude(sliceFilter->transferMagnitudeOfCurrentSliceToMapper(16,16));
-    imageMapper->setZPosition(sliceFilter->getSlice());
+    sliceMapper = new HorizontalSliceToImageMapper();
+    sliceMapper->setDataSlice(sliceFilter->transferDataToMapper(16,16), 16,16);
+    sliceMapper->setMagnitude(sliceFilter->transferMagnitudeOfCurrentSliceToMapper(16,16));
+    sliceMapper->setZPosition(sliceFilter->getSlice());
 
     contourMapper = new HorizontalSliceToContourLineMapper();
     contourMapper->setDataSlice(sliceFilter->transferDataToMapper(16,16),16,16);
@@ -265,8 +267,8 @@ void OpenGLDisplayWidget::initVisualizationPipeline()
     // Initialize rendering modules.
     bboxRenderer = new DataVolumeBoundingBoxRenderer();
     sliceRenderer = new HorizontalSliceRenderer();
-    sliceRenderer->setMapper(mapper);
-    sliceRenderer->setZPosition(mapper->getZPosition());
+    sliceRenderer->setMapper(sliceMapper);
+    sliceRenderer->setZPosition(sliceMapper->getZPosition());
 
     // ....
 }
