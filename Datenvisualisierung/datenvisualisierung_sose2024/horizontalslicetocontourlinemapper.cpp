@@ -42,21 +42,6 @@ QVector<QVector3D> HorizontalSliceToContourLineMapper::mapSliceToContourLineSegm
                 break;
             }
 
-
-
-            case 3|13:
-
-           case 4|12:
-
-           case 5|11:
-
-           case 6|10:
-
-           case 7|9:
-
-
-               // code block
-**/
            }
         }
     }

@@ -9,6 +9,8 @@
 #include "cartesiangridtohorizontalslicefilter.h"
 #include "horizontalslicerenderer.h"
 #include "horizontalslicetoimagemapper.h"
+#include "horizontalslicetocontourlinemapper.h"
+#include "horizontalcontourlinesrenderer.h"
 
 
 OpenGLDisplayWidget::OpenGLDisplayWidget(QWidget *parent)
@@ -249,10 +251,16 @@ void OpenGLDisplayWidget::initVisualizationPipeline()
 
 
     // Initialize mapper modules.
-    mapper = new HorizontalSliceToImageMapper();
-    mapper->setDataSlice(sliceFilter->transferDataToMapper(16,16), 16,16);
-    mapper->setMagnitude(sliceFilter->transferMagnitudeOfCurrentSliceToMapper(16,16));
-    mapper->setZPosition(sliceFilter->getSlice());
+    imageMapper = new HorizontalSliceToImageMapper();
+    imageMapper->setDataSlice(sliceFilter->transferDataToMapper(16,16), 16,16);
+    imageMapper->setMagnitude(sliceFilter->transferMagnitudeOfCurrentSliceToMapper(16,16));
+    imageMapper->setZPosition(sliceFilter->getSlice());
+
+    contourMapper = new HorizontalSliceToContourLineMapper();
+    contourMapper->setDataSlice(sliceFilter->transferDataToMapper(16,16),16,16);
+    contourMapper->setZPosition(sliceFilter->getSlice());
+
+
 
     // Initialize rendering modules.
     bboxRenderer = new DataVolumeBoundingBoxRenderer();

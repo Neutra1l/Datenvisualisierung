@@ -7,6 +7,8 @@
 #include "horizontalslicerenderer.h"
 #include "horizontalslicetoimagemapper.h"
 #include "flowdatasource.h"
+#include "horizontalslicetocontourlinemapper.h"
+#include "horizontalcontourlinesrenderer.h"
 
 class OpenGLDisplayWidget : public QOpenGLWidget
 {
@@ -50,7 +52,9 @@ private:
     // ========================
     FlowDataSource *flowdatasource;
     CartesianGridToHorizontalSliceFilter *sliceFilter;
-    HorizontalSliceToImageMapper *mapper;
+    HorizontalSliceToImageMapper *imageMapper;
+    HorizontalContourLinesRenderer *contourRenderer;
+    HorizontalSliceToContourLineMapper *contourMapper;
     DataVolumeBoundingBoxRenderer *bboxRenderer;
     HorizontalSliceRenderer *sliceRenderer;
 

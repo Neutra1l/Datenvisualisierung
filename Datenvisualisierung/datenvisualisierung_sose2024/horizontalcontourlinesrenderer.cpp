@@ -28,14 +28,14 @@ void HorizontalContourLinesRenderer::setZPosition(int z)
 
 void HorizontalContourLinesRenderer::drawContourLines(QMatrix4x4 matrix)
 {
-    QVector<QVector3D> isoLineCrossingPoints = (*contourMapper).mapSliceToImage();
+    QVector<QVector3D> isoLineCrossingPoints = (*contourMapper).mapSliceToContourLineSegments();
     //QImage image2 = (*imageMapper).mapMagnitudeToImage();
     //QImage img = (*imageMapper).mapSliceToImage("uhhlogo.png");
 
     QOpenGLTexture texture(QOpenGLTexture::Target2D);
     texture.create();
     texture.setWrapMode(QOpenGLTexture::ClampToEdge);
-    texture.setData(image);
+    texture.setData(isoLineCrossingPoints);
 
     const int textureUnit = 0; // select a texture unit
     texture.bind(textureUnit);
