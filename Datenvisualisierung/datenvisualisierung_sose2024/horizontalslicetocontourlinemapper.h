@@ -12,7 +12,9 @@ public:
     void setDataSlice(float *dataFromFilter, int x, int y);
     int caseDecider(float a, float b, float c, float d);
     int setZPosition(int z);
+    float isoCrossingBetweenVertices(float isoValue, float a, float b);
 private:
+    float isoValue;
     float *dataSlice;
     float *magnitudes;
     int xs;
