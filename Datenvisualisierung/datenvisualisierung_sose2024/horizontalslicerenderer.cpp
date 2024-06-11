@@ -102,10 +102,13 @@ void HorizontalSliceRenderer::initImageSliceGeometry()
     vertexBuffer.allocate(unitSquareVertices, numVertices * 3 * sizeof(float));
     vertexBuffer.release();
 
+
     // Store the information OpenGL needs for rendering the vertex buffer
     // in a "vertex array object". This can easily be bound to the OpenGL
     // pipeline during rendering.
-    QOpenGLVertexArrayObject::Binder vaoBinder(&vertexArrayObject);
+
+
+     QOpenGLVertexArrayObject::Binder vaoBinder(&vertexArrayObject);
     if (vertexArrayObject.isCreated())
     {
         vertexBuffer.bind();
@@ -113,6 +116,7 @@ void HorizontalSliceRenderer::initImageSliceGeometry()
         shaderProgram.enableAttributeArray("vertexPosition");
         vertexBuffer.release();
     }
+
 }
 
 

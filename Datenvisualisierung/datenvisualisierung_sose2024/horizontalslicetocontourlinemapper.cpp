@@ -1,12 +1,19 @@
 #include "horizontalslicetocontourlinemapper.h"
 #include <QVector>
 #include <QVector3D>
-#include <list>
+
 HorizontalSliceToContourLineMapper::HorizontalSliceToContourLineMapper() {}
 
 QVector<QVector3D> HorizontalSliceToContourLineMapper::mapSliceToContourLineSegments(){
     QVector <QVector3D> contourCrossingPoints;
+    QVector3D vector1(0,0,0);
+    QVector3D vector2(0.9,0,0);
+    QVector3D vector3(0,0,0);
+    QVector3D vector4(0,0.9,0);
 
+    contourCrossingPoints << vector1 << vector2 << vector3 << vector4;
+
+    /**
     for(int y = 0; y<ys-1; y++)
     {
         for(int x = 0;x<xs-1;x++)
@@ -23,7 +30,7 @@ QVector<QVector3D> HorizontalSliceToContourLineMapper::mapSliceToContourLineSegm
 
            /**
             * Wichtig: Benennung alphaxy bedeutet: die Distanz wird berechnet aus der Sicht von Vertex x
-            * */
+
            if(configuration == 1 || configuration == 14)
            {
                float alpha30 = isoCrossingBetweenVertices(isoValue, vertex3, vertex0);
@@ -110,7 +117,8 @@ QVector<QVector3D> HorizontalSliceToContourLineMapper::mapSliceToContourLineSegm
                contourCrossingPoints.append(vector2);
            }
         }
-    }
+        **/
+
     return contourCrossingPoints;
 
 }

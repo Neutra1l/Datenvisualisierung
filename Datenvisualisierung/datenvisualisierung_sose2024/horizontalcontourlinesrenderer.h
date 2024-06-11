@@ -6,7 +6,7 @@
 #include <QOpenGLVertexArrayObject>
 
 #include "horizontalslicetocontourlinemapper.h"
-#include "horizontalslicetoimagemapper.h"
+
 
 class HorizontalContourLinesRenderer
 {

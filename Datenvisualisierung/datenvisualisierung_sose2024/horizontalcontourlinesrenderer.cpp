@@ -1,11 +1,8 @@
 #include "horizontalcontourlinesrenderer.h"
-#include "horizontalslicerenderer.h"
-#include "horizontalslicetoimagemapper.h"
 #include <iostream>
 #include <QOpenGLFunctions>
 #include <QOpenGLContext>
 #include <QOpenGLShader>
-#include <QOpenGLTexture>
 
 HorizontalContourLinesRenderer::HorizontalContourLinesRenderer(): vertexBuffer(QOpenGLBuffer::VertexBuffer) {
     initOpenGLShaders();
@@ -28,18 +25,26 @@ void HorizontalContourLinesRenderer::setZPosition(int z)
 
 void HorizontalContourLinesRenderer::drawContourLines(QMatrix4x4 matrix)
 {
-    QVector<QVector3D> isoLineCrossingPoints = (*contourMapper).mapSliceToContourLineSegments();
+    //QVector<QVector3D> isoLineCrossingPoints = contourMapper->mapSliceToContourLineSegments();
     //QImage image2 = (*imageMapper).mapMagnitudeToImage();
     //QImage img = (*imageMapper).mapSliceToImage("uhhlogo.png");
+    QVector<QVector3D> isoLineCrossingPoints;
+    QVector3D vector3 = QVector3D(0.9,0,0);
+    QVector3D vector4 = QVector3D(0,0.9,0);
+    isoLineCrossingPoints << vector3 << vector4;
 
-    QOpenGLTexture texture(QOpenGLTexture::Target2D);
-    texture.create();
-    texture.setWrapMode(QOpenGLTexture::ClampToEdge);
-    texture.setData(isoLineCrossingPoints);
+    vertexBuffer.bind();
+    vertexBuffer.allocate(isoLineCrossingPoints.constData(), isoLineCrossingPoints.size()*sizeof(QVector3D));
+    vertexBuffer.release();
 
-    const int textureUnit = 0; // select a texture unit
-    texture.bind(textureUnit);
-    shaderProgram.setUniformValue("colorMappingTexture", textureUnit);
+    QOpenGLVertexArrayObject::Binder vaoBinder(&vertexArrayObject);
+    if (vertexArrayObject.isCreated())
+    {
+        vertexBuffer.bind();
+        shaderProgram.setAttributeBuffer("vertexPosition", GL_FLOAT, 0, 3, sizeof(QVector3D));
+        shaderProgram.enableAttributeArray("vertexPosition");
+        vertexBuffer.release();
+    }
 
     // Tell OpenGL to use the shader program of this class.
     shaderProgram.bind();
@@ -50,17 +55,15 @@ void HorizontalContourLinesRenderer::drawContourLines(QMatrix4x4 matrix)
     // Set the model-view-projection matrix as a uniform value.
     shaderProgram.setUniformValue("mvpMatrix",matrix);
 
-    texture.bind(0);
-        //Issue OpenGL draw commands.
+    //Issue OpenGL draw commands.
     QOpenGLFunctions *f = QOpenGLContext::currentContext()->functions();
-    f->glLineWidth(2);
-    f->glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
+    f->glLineWidth(3);
+    f->glDrawArrays(GL_LINES, 0, isoLineCrossingPoints.size());
 
     // Release objects until next render cycle.
     vertexArrayObject.release();
-    texture.release();
     shaderProgram.release();
-    texture.destroy();
+
 }
 
 void HorizontalContourLinesRenderer::initOpenGLShaders()
@@ -92,19 +95,22 @@ void HorizontalContourLinesRenderer::initOpenGLShaders()
 void HorizontalContourLinesRenderer::initContourLinesGeometry()
 {
     // Vertices of a unit square that represents the image.
-    const unsigned int numVertices = 4;
 
-    float unitSquareVertices;
 
     // Create vertex buffer and upload vertex data to buffer.
+
     vertexBuffer.create(); // make sure to destroy in destructor!
+
+    /**
     vertexBuffer.bind();
     vertexBuffer.allocate(unitSquareVertices, numVertices * 3 * sizeof(float));
     vertexBuffer.release();
+    **/
 
     // Store the information OpenGL needs for rendering the vertex buffer
     // in a "vertex array object". This can easily be bound to the OpenGL
     // pipeline during rendering.
+    /**
     QOpenGLVertexArrayObject::Binder vaoBinder(&vertexArrayObject);
     if (vertexArrayObject.isCreated())
     {
@@ -113,4 +119,5 @@ void HorizontalContourLinesRenderer::initContourLinesGeometry()
         shaderProgram.enableAttributeArray("vertexPosition");
         vertexBuffer.release();
     }
+    **/
 }

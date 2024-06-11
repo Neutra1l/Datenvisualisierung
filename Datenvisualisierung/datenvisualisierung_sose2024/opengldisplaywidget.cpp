@@ -95,6 +95,7 @@ void OpenGLDisplayWidget::paintGL()
     // Call renderer modules.
     bboxRenderer->drawBoundingBox(mvpMatrix);
     sliceRenderer->drawImage(mvpMatrix);
+    contourRenderer->drawContourLines(mvpMatrix);
 
     // ....
 }
@@ -255,14 +256,11 @@ void OpenGLDisplayWidget::initVisualizationPipeline()
     // Initialize mapper modules.
     sliceMapper = new HorizontalSliceToImageMapper();
     sliceMapper->setDataSlice(sliceFilter->transferDataToMapper(16,16), 16,16);
-    sliceMapper->setMagnitude(sliceFilter->transferMagnitudeOfCurrentSliceToMapper(16,16));
     sliceMapper->setZPosition(sliceFilter->getSlice());
 
     contourMapper = new HorizontalSliceToContourLineMapper();
     contourMapper->setDataSlice(sliceFilter->transferDataToMapper(16,16),16,16);
     contourMapper->setZPosition(sliceFilter->getSlice());
-
-
 
     // Initialize rendering modules.
     bboxRenderer = new DataVolumeBoundingBoxRenderer();
