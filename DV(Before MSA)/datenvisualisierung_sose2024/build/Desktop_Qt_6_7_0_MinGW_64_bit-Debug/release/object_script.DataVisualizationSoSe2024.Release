@@ -1,0 +1,10 @@
+release/cartesiangridtohorizontalslicefilter.o
+release/flowdatasource.o
+release/horizontalslicerenderer.o
+release/horizontalslicetoimagemapper.o
+release/main.o
+release/mainwindow.o
+release/opengldisplaywidget.o
+release/datavolumeboundingboxrenderer.o
+release/moc_mainwindow.o
+release/moc_opengldisplaywidget.o
