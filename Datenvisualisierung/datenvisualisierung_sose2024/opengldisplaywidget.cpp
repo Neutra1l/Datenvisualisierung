@@ -64,7 +64,7 @@ void OpenGLDisplayWidget::initializeGL()
 
     // Set the backgound color of the OpenGL display enable the depth buffer.
     QOpenGLFunctions *f = QOpenGLContext::currentContext()->functions();
-    f->glClearColor(255, 255, 255, 1);
+    f->glClearColor(255, 255, 255, 0);
     f->glEnable(GL_DEPTH_TEST);
 
     // Our own initialization of the visualization pipeline.
@@ -261,6 +261,8 @@ void OpenGLDisplayWidget::initVisualizationPipeline()
     contourMapper = new HorizontalSliceToContourLineMapper();
     contourMapper->setDataSlice(sliceFilter->transferDataToMapper(16,16),16,16);
     contourMapper->setZPosition(sliceFilter->getSlice());
+    contourMapper->setIsoValue(0);
+    contourMapper->mapSliceToContourLineSegments();
 
     // Initialize rendering modules.
     bboxRenderer = new DataVolumeBoundingBoxRenderer();
@@ -269,7 +271,7 @@ void OpenGLDisplayWidget::initVisualizationPipeline()
     sliceRenderer->setZPosition(sliceMapper->getZPosition());
     contourRenderer = new HorizontalContourLinesRenderer();
     contourRenderer->setMapper(contourMapper);
-    contourRenderer->setZPosition(sliceFilter->getSlice());
+    contourRenderer->setZPosition(contourMapper->getZPosition());
 
     // ....
 }

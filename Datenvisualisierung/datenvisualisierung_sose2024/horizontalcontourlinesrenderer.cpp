@@ -29,9 +29,8 @@ void HorizontalContourLinesRenderer::drawContourLines(QMatrix4x4 matrix)
     //QImage image2 = (*imageMapper).mapMagnitudeToImage();
     //QImage img = (*imageMapper).mapSliceToImage("uhhlogo.png");
     QVector<QVector3D> isoLineCrossingPoints;
-    QVector3D vector3 = QVector3D(0.9,0,0);
-    QVector3D vector4 = QVector3D(0,0.9,0);
-    isoLineCrossingPoints << vector3 << vector4;
+
+    isoLineCrossingPoints = (*contourMapper).mapSliceToContourLineSegments();
 
     vertexBuffer.bind();
     vertexBuffer.allocate(isoLineCrossingPoints.constData(), isoLineCrossingPoints.size()*sizeof(QVector3D));
@@ -57,8 +56,8 @@ void HorizontalContourLinesRenderer::drawContourLines(QMatrix4x4 matrix)
 
     //Issue OpenGL draw commands.
     QOpenGLFunctions *f = QOpenGLContext::currentContext()->functions();
-    f->glLineWidth(3);
-    f->glDrawArrays(GL_LINES, 0, isoLineCrossingPoints.size());
+    f->glLineWidth(5);
+    f->glDrawArrays(GL_LINES, 1, isoLineCrossingPoints.size());
 
     // Release objects until next render cycle.
     vertexArrayObject.release();

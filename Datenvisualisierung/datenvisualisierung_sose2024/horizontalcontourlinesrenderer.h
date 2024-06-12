@@ -22,7 +22,7 @@ private:
     QOpenGLBuffer vertexBuffer;
     QOpenGLVertexArrayObject vertexArrayObject;
     int zPosition;
-    QVector<QVector3D>* contourLineCuts;
+
 
     void initOpenGLShaders();
     void initContourLinesGeometry();
