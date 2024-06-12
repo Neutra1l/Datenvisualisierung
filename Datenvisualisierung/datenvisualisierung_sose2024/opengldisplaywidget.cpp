@@ -267,6 +267,9 @@ void OpenGLDisplayWidget::initVisualizationPipeline()
     sliceRenderer = new HorizontalSliceRenderer();
     sliceRenderer->setMapper(sliceMapper);
     sliceRenderer->setZPosition(sliceMapper->getZPosition());
+    contourRenderer = new HorizontalContourLinesRenderer();
+    contourRenderer->setMapper(contourMapper);
+    contourRenderer->setZPosition(sliceFilter->getSlice());
 
     // ....
 }
