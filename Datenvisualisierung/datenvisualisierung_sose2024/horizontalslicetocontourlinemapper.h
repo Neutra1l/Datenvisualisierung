@@ -12,9 +12,9 @@ public:
     void setDataSlice(float *dataFromFilter, int x, int y);
     int caseDecider(float a, float b, float c, float d);
     int setZPosition(int z);
-    float isoCrossingBetweenVertices(float isoValue, float a, float b);
     int getZPosition();
     void setIsoValue(float f);
+    QVector3D isoCrossingBetweenVertices(QVector3D p, float p_val, QVector3D q, float q_val, float iso);
 private:
     float isoValue;
     float *dataSlice;

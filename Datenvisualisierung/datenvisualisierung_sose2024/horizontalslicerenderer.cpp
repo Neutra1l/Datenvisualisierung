@@ -94,7 +94,7 @@ void HorizontalSliceRenderer::initImageSliceGeometry()
     // Vertices of a unit square that represents the image.
     const unsigned int numVertices = 4;
 
-    float unitSquareVertices[numVertices][3] = {{0, 0, static_cast<float>(zPosition)/15.0}, {1, 0, static_cast<float>(zPosition)/15}, {1, 1,static_cast<float>(zPosition)/15.0 }, {0, 1, static_cast<float>(zPosition)/15.0}};
+    float unitSquareVertices[numVertices][3] = {{0, 0,0}, {1, 0, 0}, {1, 1,0 }, {0, 1, 0}};
 
     // Create vertex buffer and upload vertex data to buffer.
     vertexBuffer.create(); // make sure to destroy in destructor!

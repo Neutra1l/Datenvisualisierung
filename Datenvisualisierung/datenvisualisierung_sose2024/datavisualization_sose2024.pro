@@ -51,5 +51,7 @@ HEADERS += \
 
 DISTFILES += \
     lines_fshader.glsl \
-    lines_vshader.glsl
+    lines_fshader_contour.glsl \
+    lines_vshader.glsl \
+    lines_vshader_contour.glsl
 

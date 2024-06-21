@@ -12,6 +12,10 @@
 #include "horizontalslicetocontourlinemapper.h"
 #include "horizontalcontourlinesrenderer.h"
 
+#define XS 16
+#define YS 16
+#define ZS 16
+
 
 OpenGLDisplayWidget::OpenGLDisplayWidget(QWidget *parent)
     : QOpenGLWidget(parent),
@@ -29,8 +33,8 @@ OpenGLDisplayWidget::~OpenGLDisplayWidget()
     delete sliceMapper;
     delete flowdatasource;
     delete sliceFilter;
-    delete contourRenderer;
-    delete contourMapper;
+
+
 
 }
 
@@ -160,11 +164,11 @@ void OpenGLDisplayWidget::keyPressEvent(QKeyEvent *e)
 {
     if (e->key() == Qt::Key_Up)
     {
-        if(sliceFilter->getSlice()<15)
+        if(sliceFilter->getSlice()<ZS-1)
         {
          sliceFilter->moveSlice(1);
          sliceMapper->increaseZPosition(1);
-         sliceMapper->setDataSlice(sliceFilter->transferDataToMapper(16,16), 16,16);
+         sliceMapper->setDataSlice(sliceFilter->transferDataToMapper(XS,YS), XS,YS);
 
         }
 
@@ -175,7 +179,7 @@ void OpenGLDisplayWidget::keyPressEvent(QKeyEvent *e)
         {
             sliceFilter->moveSlice(-1);
             sliceMapper->increaseZPosition(-1);
-            sliceMapper->setDataSlice(sliceFilter->transferDataToMapper(16,16), 16,16);
+            sliceMapper->setDataSlice(sliceFilter->transferDataToMapper(XS,YS), XS,YS);
 
         }
 
@@ -185,7 +189,7 @@ void OpenGLDisplayWidget::keyPressEvent(QKeyEvent *e)
         if(sliceFilter->getCurrentWindComponent() != 0)
         {
             sliceFilter->changeWindComponent(0);
-            sliceMapper->setDataSlice(sliceFilter->transferDataToMapper(16,16), 16,16);
+            sliceMapper->setDataSlice(sliceFilter->transferDataToMapper(XS,YS), XS,YS);
         }
 
     }
@@ -194,7 +198,7 @@ void OpenGLDisplayWidget::keyPressEvent(QKeyEvent *e)
         if(sliceFilter->getCurrentWindComponent() != 1)
         {
             sliceFilter->changeWindComponent(1);
-            sliceMapper->setDataSlice(sliceFilter->transferDataToMapper(16,16), 16,16);
+            sliceMapper->setDataSlice(sliceFilter->transferDataToMapper(XS,YS), XS,YS);
         }
 
     }
@@ -203,14 +207,14 @@ void OpenGLDisplayWidget::keyPressEvent(QKeyEvent *e)
         if(sliceFilter->getCurrentWindComponent() != 2)
         {
             sliceFilter->changeWindComponent(2);
-            sliceMapper->setDataSlice(sliceFilter->transferDataToMapper(16,16), 16,16);
+            sliceMapper->setDataSlice(sliceFilter->transferDataToMapper(XS,YS), XS,YS);
 
         }
 
     }
     else if(e->key() == Qt::Key_M)
     {
-       sliceMapper->setMagnitude(sliceFilter->transferMagnitudeOfCurrentSliceToMapper(16,16));
+       sliceMapper->setMagnitude(sliceFilter->transferMagnitudeOfCurrentSliceToMapper(XS,YS));
 
     }
 
@@ -242,7 +246,7 @@ void OpenGLDisplayWidget::initVisualizationPipeline()
 
     // Initialize data source(s).
     flowdatasource = new FlowDataSource();
-    flowdatasource->createData(16,16,16,0);
+    flowdatasource->createData(XS,YS,ZS,0);
     flowdatasource->calculateMagnitudeOfWind();
 
     // Initialize filter modules.
@@ -255,11 +259,11 @@ void OpenGLDisplayWidget::initVisualizationPipeline()
 
     // Initialize mapper modules.
     sliceMapper = new HorizontalSliceToImageMapper();
-    sliceMapper->setDataSlice(sliceFilter->transferDataToMapper(16,16), 16,16);
+    sliceMapper->setDataSlice(sliceFilter->transferDataToMapper(XS,YS), XS,YS);
     sliceMapper->setZPosition(sliceFilter->getSlice());
 
     contourMapper = new HorizontalSliceToContourLineMapper();
-    contourMapper->setDataSlice(sliceFilter->transferDataToMapper(16,16),16,16);
+    contourMapper->setDataSlice(sliceFilter->transferDataToMapper(XS,YS),XS,YS);
     contourMapper->setZPosition(sliceFilter->getSlice());
     contourMapper->setIsoValue(0);
     contourMapper->mapSliceToContourLineSegments();
@@ -270,8 +274,8 @@ void OpenGLDisplayWidget::initVisualizationPipeline()
     sliceRenderer->setMapper(sliceMapper);
     sliceRenderer->setZPosition(sliceMapper->getZPosition());
     contourRenderer = new HorizontalContourLinesRenderer();
-    contourRenderer->setMapper(contourMapper);
-    contourRenderer->setZPosition(contourMapper->getZPosition());
+    contourRenderer->setContourMapper(contourMapper);
+
 
     // ....
 }

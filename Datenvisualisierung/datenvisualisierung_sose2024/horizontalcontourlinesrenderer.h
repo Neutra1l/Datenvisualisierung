@@ -13,7 +13,7 @@ class HorizontalContourLinesRenderer
 public:
     void drawContourLines(QMatrix4x4 matrix);
     void setZPosition(int z);
-    void setMapper(HorizontalSliceToContourLineMapper *mapper);
+    void setContourMapper(HorizontalSliceToContourLineMapper *mapper);
     ~HorizontalContourLinesRenderer();
     HorizontalContourLinesRenderer();
 private:

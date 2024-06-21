@@ -7,6 +7,77 @@ HorizontalSliceToContourLineMapper::HorizontalSliceToContourLineMapper() {}
 QVector<QVector3D> HorizontalSliceToContourLineMapper::mapSliceToContourLineSegments(){
     QVector <QVector3D> contourCrossingPoints;
 
+    QVector3D vector1 = QVector3D(0,0,0);
+    QVector3D vector2 = QVector3D(0.5,0.5,0);
+    contourCrossingPoints << vector1 << vector2;
+
+    /**
+    for(int y = 0; y<ys-1; y++)
+    {
+        for(int x = 0;x<xs-1;x++)
+        {
+            float v0 = dataSlice[xs*y+x];
+            float v1 = dataSlice[xs*y+x+1];
+            float v2 = dataSlice[y*xs+x+xs+1];
+            float v3 = dataSlice[y*xs+x+xs];
+
+            QVector3D p0(x,     y,zPosition/16);
+            QVector3D p1(x + 1, y, zPosition/16);
+            QVector3D p2(x + 1, y + 1, zPosition/16);
+            QVector3D p3(x,     y + 1, zPosition/16);
+
+            int configuration = caseDecider(v3, v2, v1, v0);
+
+            if(configuration == 1 || configuration == 14)
+            {
+                contourCrossingPoints.append(isoCrossingBetweenVertices(p0, v0, p1, v1, isoValue));
+                contourCrossingPoints.append(isoCrossingBetweenVertices(p0, v0, p3, v3, isoValue));
+            }
+            else if(configuration == 2 || configuration == 13)
+            {
+                contourCrossingPoints.append(isoCrossingBetweenVertices(p0, v0, p1, v1, isoValue));
+                contourCrossingPoints.append(isoCrossingBetweenVertices(p1, v1, p2, v2, isoValue));
+            }
+            else if(configuration == 3 || configuration == 12)
+            {
+                contourCrossingPoints.append(isoCrossingBetweenVertices(p0, v0, p3, v3, isoValue));
+                contourCrossingPoints.append(isoCrossingBetweenVertices(p1, v1, p2, v2, isoValue));
+            }
+            else if(configuration == 4 || configuration == 11)
+            {
+                contourCrossingPoints.append(isoCrossingBetweenVertices(p1, v1, p2, v2, isoValue));
+                contourCrossingPoints.append(isoCrossingBetweenVertices(p3, v3, p2, v2, isoValue));
+            }
+            else if(configuration == 5 || configuration == 10)
+            {
+                contourCrossingPoints.append(isoCrossingBetweenVertices(p0, v0, p1, v1, isoValue));
+                contourCrossingPoints.append(isoCrossingBetweenVertices(p0, v0, p3, v3, isoValue));
+
+                contourCrossingPoints.append(isoCrossingBetweenVertices(p3, v3, p2, v2, isoValue));
+                contourCrossingPoints.append(isoCrossingBetweenVertices(p1, v1, p2, v2, isoValue));
+            }
+            else if(configuration == 6 || configuration == 9)
+            {
+                contourCrossingPoints.append(isoCrossingBetweenVertices(p0, v0, p1, v1, isoValue));
+                contourCrossingPoints.append(isoCrossingBetweenVertices(p3, v3, p2, v2, isoValue));
+            }
+            else if(configuration == 7 || configuration == 8)
+            {
+                contourCrossingPoints.append(isoCrossingBetweenVertices(p0, v0, p3, v3, isoValue));
+                contourCrossingPoints.append(isoCrossingBetweenVertices(p3, v3, p2, v2, isoValue));
+            }
+            else continue;
+
+            return contourCrossingPoints;
+
+
+
+        }
+    }
+**/
+
+
+    /**
     for(int y = 0; y<ys-1; y++)
     {
         for(int x = 0;x<xs-1;x++)
@@ -110,7 +181,7 @@ QVector<QVector3D> HorizontalSliceToContourLineMapper::mapSliceToContourLineSegm
            }
         }
     }
-
+**/
     return contourCrossingPoints;
 
 }
@@ -130,13 +201,10 @@ int HorizontalSliceToContourLineMapper::caseDecider(float a, float b, float c, f
     return 8*a+4*b+2*c+d;
 
 }
-float HorizontalSliceToContourLineMapper::isoCrossingBetweenVertices(float isoValue,float a, float b)
+QVector3D HorizontalSliceToContourLineMapper::isoCrossingBetweenVertices(QVector3D p, float p_val, QVector3D q, float q_val, float iso)
 {
-    if(a >= 0 && b >= 0 || a < 0 && b < 0)
-    {
-        return 0;
-    }
-    else return (isoValue - a)/((b-a) * (float)16);
+    float alpha = (iso - p_val) / (q_val - p_val);
+    return (p * (1 - alpha) + q * alpha)/16;
 }
 int HorizontalSliceToContourLineMapper::setZPosition(int z)
 {
