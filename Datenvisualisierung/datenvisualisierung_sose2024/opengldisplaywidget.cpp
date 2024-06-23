@@ -34,8 +34,6 @@ OpenGLDisplayWidget::~OpenGLDisplayWidget()
     delete flowdatasource;
     delete sliceFilter;
 
-
-
 }
 
 
@@ -265,17 +263,19 @@ void OpenGLDisplayWidget::initVisualizationPipeline()
     contourMapper = new HorizontalSliceToContourLineMapper();
     contourMapper->setDataSlice(sliceFilter->transferDataToMapper(XS,YS),XS,YS);
     contourMapper->setZPosition(sliceFilter->getSlice());
-    contourMapper->setIsoValue(0);
-    contourMapper->mapSliceToContourLineSegments();
+    contourMapper->setIsoValue(0.1);
 
     // Initialize rendering modules.
+    //bounding box
     bboxRenderer = new DataVolumeBoundingBoxRenderer();
+
+    //image slice
     sliceRenderer = new HorizontalSliceRenderer();
     sliceRenderer->setMapper(sliceMapper);
-    sliceRenderer->setZPosition(sliceMapper->getZPosition());
+
+    //contour lines
     contourRenderer = new HorizontalContourLinesRenderer();
     contourRenderer->setContourMapper(contourMapper);
-
 
     // ....
 }

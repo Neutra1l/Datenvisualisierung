@@ -20,8 +20,6 @@ void HorizontalContourLinesRenderer::setContourMapper(HorizontalSliceToContourLi
     contourMapper = mapper;
 }
 
-
-
 void HorizontalContourLinesRenderer::initOpenGLShaders()
 {
     // For the contours
@@ -59,10 +57,10 @@ void HorizontalContourLinesRenderer::initContourLinesGeometry()
 
 void HorizontalContourLinesRenderer::drawContourLines(QMatrix4x4 mvpMatrix)
 {
-    QVector<QVector3D> vectors = contourMapper->mapSliceToContourLineSegments(); //THIS CAUSES THE CRASH
+    QVector<QVector3D> contourCrossingPoints = contourMapper->mapSliceToContourLineSegments();
 
     vertexBuffer.bind();
-    vertexBuffer.allocate(vectors.data(), vectors.size() * sizeof(QVector3D)); //the .constData() is from a forum post, very strange, idk what it does... hmm but where can we use data()?
+    vertexBuffer.allocate(contourCrossingPoints.data(), contourCrossingPoints.size() * sizeof(QVector3D));
     vertexBuffer.release();
 
     QOpenGLVertexArrayObject::Binder vaoBinder(&vertexArrayObject);
@@ -87,7 +85,7 @@ void HorizontalContourLinesRenderer::drawContourLines(QMatrix4x4 mvpMatrix)
     // Issue OpenGL draw commands.
     QOpenGLFunctions *f = QOpenGLContext::currentContext()->functions();
     f->glLineWidth(4);
-    f->glDrawArrays(GL_LINES, 0, vectors.size()); // GL_LINES verbindet Vektore paarenweise, wahrend GL_LINE_STRIP jeden Vektor mit seinen 2 Nachbarn im Array verbindet
+    f->glDrawArrays(GL_LINES, 0, contourCrossingPoints.size()); // GL_LINES verbindet Vektore paarenweise, wahrend GL_LINE_STRIP jeden Vektor mit seinen 2 Nachbarn im Array verbindet
 
     // Release objects until next render cycle.
     vertexArrayObject.release();

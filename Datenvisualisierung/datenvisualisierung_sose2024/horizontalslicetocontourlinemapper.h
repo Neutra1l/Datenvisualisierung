@@ -10,7 +10,7 @@ public:
     QVector<QVector3D> mapSliceToContourLineSegments();
 
     void setDataSlice(float *dataFromFilter, int x, int y);
-    int caseDecider(float a, float b, float c, float d);
+    int caseDecider(float iso,float a, float b, float c, float d);
     int setZPosition(int z);
     int getZPosition();
     void setIsoValue(float f);
