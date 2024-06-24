@@ -20,14 +20,30 @@ QImage HorizontalSliceToImageMapper::mapSliceToImage()
     {
         for(int j = 0;j<xs;j++)
         {
-            float pixelValue = dataSlice[i*xs+j];
-            if(pixelValue>0)
+            if(magnitude == false)
             {
+             float pixelValue = dataSlice[i*xs+j];
+             if(pixelValue>0)
+             {
                 img.setPixelColor(j,i,QColor(0,0,int(pixelValue*255*3)));
+             }
+             else
+             {
+                img.setPixelColor(j,i,QColor(int(pixelValue*(-255)*3),0,0));
+             }
             }
             else
             {
-                img.setPixelColor(j,i,QColor(int(pixelValue*(-255)*3),0,0));
+                float pixelValue = magnitudes[i*xs+j];
+                if(pixelValue>0)
+                {
+                    img.setPixelColor(j,i,QColor(0,0,int(pixelValue*255*3)));
+                }
+                else
+                {
+                    img.setPixelColor(j,i,QColor(int(pixelValue*(-255)*3),0,0));
+                }
+
             }
 
         }
@@ -43,7 +59,7 @@ QImage HorizontalSliceToImageMapper::mapMagnitudeToImage()
     {
         for(int j = 0;j<xs;j++)
         {
-            float pixelValue = magnitude[i*xs+j];
+            float pixelValue = magnitudes[i*xs+j];
             if(pixelValue>0)
             {
                 img.setPixelColor(j,i,QColor(0,0,int(pixelValue*255*3)));
@@ -72,7 +88,7 @@ void HorizontalSliceToImageMapper::setDataSlice(float* dataFromFilter,int x, int
 }
 void HorizontalSliceToImageMapper::setMagnitude(float* magnitudeFromFilter)
 {
-    magnitude = magnitudeFromFilter;
+    magnitudes = magnitudeFromFilter;
 }
 void HorizontalSliceToImageMapper::setZPosition(int z)
 {
@@ -86,5 +102,8 @@ int HorizontalSliceToImageMapper::getZPosition()
 {
     return zPosition;
 }
-
+void HorizontalSliceToImageMapper::imageAndMagnitudeSwitch(bool a)
+{
+    magnitude = a;
+}
 

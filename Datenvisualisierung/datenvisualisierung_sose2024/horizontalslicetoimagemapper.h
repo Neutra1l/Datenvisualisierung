@@ -18,12 +18,14 @@ public:
     ~HorizontalSliceToImageMapper();
     void increaseZPosition(int steps);
     int getZPosition();
+    void imageAndMagnitudeSwitch(bool a);
 private:
-    float *magnitude;
+    float *magnitudes;
     float *dataSlice;
     int xs;
     int ys;
     int zPosition;
+    bool magnitude;
 };
 
 
