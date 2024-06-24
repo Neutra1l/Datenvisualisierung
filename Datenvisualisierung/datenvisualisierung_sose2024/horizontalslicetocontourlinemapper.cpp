@@ -6,6 +6,10 @@
 #define zNorm (float)zPosition/16
 
 HorizontalSliceToContourLineMapper::HorizontalSliceToContourLineMapper() {}
+HorizontalSliceToContourLineMapper::~HorizontalSliceToContourLineMapper()
+{
+    std::cout << " Contour mapper destroyed" << std::endl;
+}
 
 QVector<QVector3D> HorizontalSliceToContourLineMapper::mapSliceToContourLineSegments(){
     QVector <QVector3D> contourCrossingPoints;
@@ -37,10 +41,10 @@ QVector<QVector3D> HorizontalSliceToContourLineMapper::mapSliceToContourLineSegm
                 if (configuration==1 || configuration==14) {
 
                     x_value = float(x)/(xs-1);
-                    y_value = float(y)/(ys-1)+(iso-v0)/((ys-1)*(v3-v0));
+                    y_value = float(y)/(ys-1)+isoCrossingBetweenVertices(iso, v3,v0);
                     vector1 = QVector3D(x_value,y_value,zNorm);
 
-                    x_value = float(x)/(xs-1)+(iso-v0)/((xs-1)*(v1-v0));
+                    x_value = float(x)/(xs-1)+isoCrossingBetweenVertices(iso, v1,v0);
                     y_value = float(y)/(ys-1);
                     vector2 = QVector3D(x_value, y_value,zNorm);
 
@@ -48,30 +52,30 @@ QVector<QVector3D> HorizontalSliceToContourLineMapper::mapSliceToContourLineSegm
                 } else if (configuration==2 || configuration==13) {
 
                     x_value = float(x+1)/(xs-1);
-                    y_value = float(y)/(ys-1)+(iso-v1)/((ys-1)*(v2-v1));
+                    y_value = float(y)/(ys-1)+isoCrossingBetweenVertices(iso, v2,v1);
                     vector1 = QVector3D(x_value,y_value,zNorm);
 
-                    x_value = float(x)/(xs-1)+(iso-v0)/((xs-1)*(v1-v0));
+                    x_value = float(x)/(xs-1)+isoCrossingBetweenVertices(iso, v1,v0);
                     y_value = float(y)/(ys-1);
                     vector2 = QVector3D(x_value, y_value,zNorm);
 
 
                 } else if (configuration==3 || configuration==12) {
                     x_value = float(x)/(xs-1);
-                    y_value = float(y)/(ys-1)+(iso-v0)/((ys-1)*(v3-v0));
+                    y_value = float(y)/(ys-1)+isoCrossingBetweenVertices(iso, v3,v0);
                     vector1 = QVector3D(x_value,y_value,zNorm);
 
                     x_value = float(x+1)/(xs-1);
-                    y_value = float(y)/(ys-1)+(iso-v1)/((ys-1)*(v2-v1));
+                    y_value = float(y)/(ys-1)+isoCrossingBetweenVertices(iso, v2,v1);
                     vector2 = QVector3D(x_value,y_value,zNorm);
 
                 } else if (configuration==4 || configuration==11) {
 
                     x_value = float(x+1)/(xs-1);
-                    y_value = float(y)/(ys-1)+(iso-v1)/((ys-1)*(v2-v1));
+                    y_value = float(y)/(ys-1)+isoCrossingBetweenVertices(iso, v2,v1);
                     vector1 = QVector3D(x_value, y_value, zNorm);
 
-                    x_value = float(x)/(xs-1)+(iso-v3)/((xs-1)*(v2-v3));
+                    x_value = float(x)/(xs-1)+isoCrossingBetweenVertices(iso, v2,v3);
                     y_value = float(y+1)/(ys-1);
                     vector2 = QVector3D(x_value,y_value,zNorm);
 
@@ -85,39 +89,39 @@ QVector<QVector3D> HorizontalSliceToContourLineMapper::mapSliceToContourLineSegm
                         vector2 = QVector3D(float(x)/(xs-1)+(iso-v0)/((xs-1)*(v1-v0)),float(y)/(ys-1),zNorm);
 
                     } else {
-                        vector1 = QVector3D(float(x)/(xs-1)+(iso-v3)/((xs-1)*(v2-v3)),float(y+1)/(ys-1),zNorm);
-                        vector2 = QVector3D(float(x)/(xs-1),float(y)/(ys-1)+(iso-v0)/((ys-1)*(v3-v0)),zNorm);
+                        vector1 = QVector3D(float(x)/(xs-1)+isoCrossingBetweenVertices(iso, v2,v3),float(y+1)/(ys-1),zNorm);
+                        vector2 = QVector3D(float(x)/(xs-1),float(y)/(ys-1)+isoCrossingBetweenVertices(iso, v3,v0),zNorm);
                         contourCrossingPoints << vector1 << vector2;
-                        vector1 = QVector3D(float(x+1)/(xs-1),float(y)/(ys-1)+(iso-v3)/((ys-1)*(v2-v3)),zNorm);
-                        vector2 = QVector3D(float(x)/(xs-1)+(iso-v0)/((xs-1)*(v1-v0)),float(y)/(ys-1),zNorm);
+                        vector1 = QVector3D(float(x+1)/(xs-1),float(y)/(ys-1)+isoCrossingBetweenVertices(iso, v2,v3),zNorm);
+                        vector2 = QVector3D(float(x)/(xs-1)+isoCrossingBetweenVertices(iso, v1,v0),float(y)/(ys-1),zNorm);
 
                     }
                 } else if (configuration==10) {
 
                     if (0.25*(v0+v1+v2+v3)>iso) {
-                        vector1 = QVector3D(float(x)/(xs-1)+(iso-v3)/((xs-1)*(v2-v3)),float(y+1)/(ys-1),zNorm);
-                        vector2 = QVector3D(float(x)/(xs-1),float(y)/(ys-1)+(iso-v0)/((ys-1)*(v3-v0)),zNorm);
+                        vector1 = QVector3D(float(x)/(xs-1)+isoCrossingBetweenVertices(iso, v2,v3),float(y+1)/(ys-1),zNorm);
+                        vector2 = QVector3D(float(x)/(xs-1),float(y)/(ys-1)+isoCrossingBetweenVertices(iso, v3,v0),zNorm);
                         contourCrossingPoints << vector1 << vector2;
-                        vector1 = QVector3D(float(x+1)/(xs-1),float(y)/(ys-1)+(iso-v3)/((ys-1)*(v2-v3)),zNorm);
-                        vector2 = QVector3D(float(x)/(xs-1)+(iso-v0)/((xs-1)*(v1-v0)),float(y)/(ys-1),zNorm);
+                        vector1 = QVector3D(float(x+1)/(xs-1),float(y)/(ys-1)+isoCrossingBetweenVertices(iso, v2,v3),zNorm);
+                        vector2 = QVector3D(float(x)/(xs-1)+isoCrossingBetweenVertices(iso, v1,v0),float(y)/(ys-1),zNorm);
 
                     } else {
 
-                        vector1 = QVector3D(float(x+1)/(xs-1),float(y)/(ys-1)+(iso-v1)/((ys-1)*(v2-v1)),zNorm);
-                        vector2 = QVector3D(float(x)/(xs-1)+(iso-v3)/((xs-1)*(v2-v3)),float(y+1)/(ys-1),zNorm);
+                        vector1 = QVector3D(float(x+1)/(xs-1),float(y)/(ys-1)+isoCrossingBetweenVertices(iso, v2,v1),zNorm);
+                        vector2 = QVector3D(float(x)/(xs-1)+isoCrossingBetweenVertices(iso, v2,v3),float(y+1)/(ys-1),zNorm);
                         contourCrossingPoints << vector1 << vector2;
-                        vector1 = QVector3D(float(x)/(xs-1),float(y)/(ys-1)+(iso-v0)/((ys-1)*(v3-v0)),zNorm);
-                        vector2 = QVector3D(float(x)/(xs-1)+(iso-v0)/((xs-1)*(v1-v0)),float(y)/(ys-1),zNorm);
+                        vector1 = QVector3D(float(x)/(xs-1),float(y)/(ys-1)+isoCrossingBetweenVertices(iso, v3,v0),zNorm);
+                        vector2 = QVector3D(float(x)/(xs-1)+isoCrossingBetweenVertices(iso, v1,v0),float(y)/(ys-1),zNorm);
                     }
 
                 } else if (configuration==6 || configuration==9) {
 
-                    vector1 = QVector3D(float(x)/(xs-1)+(iso-v0)/((xs-1)*(v1-v0)),float(y)/(ys-1),zNorm);
-                    vector2 = QVector3D(float(x)/(xs-1)+(iso-v3)/((xs-1)*(v2-v3)),float(y+1)/(ys-1),zNorm);
+                    vector1 = QVector3D(float(x)/(xs-1)+isoCrossingBetweenVertices(iso, v1,v0),float(y)/(ys-1),zNorm);
+                    vector2 = QVector3D(float(x)/(xs-1)+isoCrossingBetweenVertices(iso, v2,v3),float(y+1)/(ys-1),zNorm);
 
                 } else if (configuration==7 || configuration==8) {
-                    vector1 = QVector3D(float(x)/(xs-1)+(iso-v3)/((xs-1)*(v2-v3)),float(y+1)/(ys-1),zNorm);
-                    vector2 = QVector3D(float(x)/(xs-1),float(y)/(ys-1)+(iso-v0)/((ys-1)*(v3-v0)),zNorm);
+                    vector1 = QVector3D(float(x)/(xs-1)+isoCrossingBetweenVertices(iso, v2,v3) ,float(y+1)/(ys-1),zNorm);
+                    vector2 = QVector3D(float(x)/(xs-1),float(y)/(ys-1)+isoCrossingBetweenVertices(iso, v3,v0),zNorm);
                 } else continue;
 
                 contourCrossingPoints << vector1 << vector2;
@@ -125,6 +129,10 @@ QVector<QVector3D> HorizontalSliceToContourLineMapper::mapSliceToContourLineSegm
         }
     }
     return contourCrossingPoints;
+}
+float HorizontalSliceToContourLineMapper::isoCrossingBetweenVertices(float iso, float a, float b)
+{
+    return (iso-b)/((xs-1)*(a-b));
 }
 void HorizontalSliceToContourLineMapper::setDataSlice(float* dataFromFilter,int x, int y)
 {

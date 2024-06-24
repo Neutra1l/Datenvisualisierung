@@ -31,6 +31,7 @@ OpenGLDisplayWidget::~OpenGLDisplayWidget()
     delete bboxRenderer;
     delete sliceRenderer;
     delete sliceMapper;
+    delete contourMapper;
     delete flowdatasource;
     delete sliceFilter;
 

@@ -14,11 +14,12 @@ public:
     int caseDecider(float iso,float a, float b, float c, float d);
     int getZPosition();
     void setIsoValue(float f [3]);
-    QVector3D isoCrossingBetweenVertices(QVector3D p, float p_val, QVector3D q, float q_val, float iso);
+    float isoCrossingBetweenVertices(float iso, float a, float b);
     void setZPosition(int z);
     void incrementZPosition(int steps);
     void setMagnitudes(float* sliceFilter);
     void imageAndMagnitudeSwitch(bool a);
+    ~HorizontalSliceToContourLineMapper();
 private:
     float *isoValue;
     float *dataSlice;
