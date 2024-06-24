@@ -172,8 +172,8 @@ void OpenGLDisplayWidget::keyPressEvent(QKeyEvent *e)
 
          contourMapper->incrementZPosition(1);
          contourMapper->setDataSlice(sliceFilter->transferDataToMapper(XS,YS), XS, YS);
+         contourMapper->setMagnitudes(sliceFilter->transferMagnitudeOfCurrentSliceToMapper(XS,YS));
 
-         sliceRenderer->setZPosition(sliceRenderer->getZPosition() + 1);
 
         }
 
@@ -190,6 +190,7 @@ void OpenGLDisplayWidget::keyPressEvent(QKeyEvent *e)
 
             contourMapper->incrementZPosition(-1);
             contourMapper->setDataSlice(sliceFilter->transferDataToMapper(XS,YS), XS, YS);
+            contourMapper->setMagnitudes(sliceFilter->transferMagnitudeOfCurrentSliceToMapper(XS,YS));
 
         }
 
@@ -197,19 +198,20 @@ void OpenGLDisplayWidget::keyPressEvent(QKeyEvent *e)
     else if (e->key() == Qt::Key_X)
     {
         sliceMapper->imageAndMagnitudeSwitch(false);
+        contourMapper->imageAndMagnitudeSwitch(false);
         if(sliceFilter->getCurrentWindComponent() != 0)
         {
             sliceFilter->changeWindComponent(0);
 
             sliceMapper->setDataSlice(sliceFilter->transferDataToMapper(XS,YS), XS,YS);
             contourMapper->setDataSlice(sliceFilter->transferDataToMapper(XS,YS), XS, YS);
-
         }
 
     }
     else if (e->key() == Qt::Key_Y)
     {
         sliceMapper->imageAndMagnitudeSwitch(false);
+        contourMapper->imageAndMagnitudeSwitch(false);
         if(sliceFilter->getCurrentWindComponent() != 1)
         {
             sliceFilter->changeWindComponent(1);
@@ -222,6 +224,7 @@ void OpenGLDisplayWidget::keyPressEvent(QKeyEvent *e)
     else if (e->key() == Qt::Key_Z)
     {
         sliceMapper->imageAndMagnitudeSwitch(false);
+        contourMapper->imageAndMagnitudeSwitch(false);
         if(sliceFilter->getCurrentWindComponent() != 2)
         {
             sliceFilter->changeWindComponent(2);
@@ -235,6 +238,9 @@ void OpenGLDisplayWidget::keyPressEvent(QKeyEvent *e)
     else if(e->key() == Qt::Key_M)
     {
       sliceMapper->imageAndMagnitudeSwitch(true);
+      contourMapper->imageAndMagnitudeSwitch(true);
+
+
     }
 
     // Redraw OpenGL.
@@ -288,8 +294,10 @@ void OpenGLDisplayWidget::initVisualizationPipeline()
     isoValues[1] = 0;
     isoValues[2] = 0.1;
     contourMapper->setDataSlice(sliceFilter->transferDataToMapper(XS,YS),XS,YS);
+    contourMapper->setMagnitudes(sliceFilter->transferMagnitudeOfCurrentSliceToMapper(XS,YS));
     contourMapper->setZPosition(sliceFilter->getSlice());
     contourMapper->setIsoValue(isoValues);
+    contourMapper->imageAndMagnitudeSwitch(false);
 
     // Initialize rendering modules.
     //bounding box

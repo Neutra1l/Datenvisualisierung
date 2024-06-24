@@ -51,28 +51,7 @@ QImage HorizontalSliceToImageMapper::mapSliceToImage()
     return img;
 }
 
-QImage HorizontalSliceToImageMapper::mapMagnitudeToImage()
-{
-    QImage img(xs,ys,QImage::Format_RGB32);
 
-    for(int i = 0; i<ys; i++)
-    {
-        for(int j = 0;j<xs;j++)
-        {
-            float pixelValue = magnitudes[i*xs+j];
-            if(pixelValue>0)
-            {
-                img.setPixelColor(j,i,QColor(0,0,int(pixelValue*255*3)));
-            }
-            else
-            {
-                img.setPixelColor(j,i,QColor(int(pixelValue*(-255)*3),0,0));
-            }
-
-        }
-    }
-    return img;
-}
 QImage HorizontalSliceToImageMapper::mapSliceToImage(QString path)
 {
     QImage img;

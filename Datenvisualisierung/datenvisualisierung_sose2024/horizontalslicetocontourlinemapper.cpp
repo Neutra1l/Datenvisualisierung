@@ -1,4 +1,5 @@
 #include "horizontalslicetocontourlinemapper.h"
+#include "cartesiangridtohorizontalslicefilter.h"
 #include <QVector>
 #include <QVector3D>
 #include <iostream>
@@ -18,10 +19,18 @@ QVector<QVector3D> HorizontalSliceToContourLineMapper::mapSliceToContourLineSegm
         float iso = isoValue[k];
         for (int y=0; y< ys-1; y++) {
             for (int x=0; x< xs-1; x++) {
+                if(magnitude == false){
                 v3 = dataSlice[((y+1)*xs+x)];
                 v2 = dataSlice[((y+1)*xs+x+1)];
                 v1 = dataSlice[(y*xs+x+1)];
                 v0 = dataSlice[(y*xs+x)];
+                }
+                else{
+                    v3 = magnitudes[((y+1)*xs+x)];
+                    v2 = magnitudes[((y+1)*xs+x+1)];
+                    v1 = magnitudes[(y*xs+x+1)];
+                    v0 = magnitudes[(y*xs+x)];
+                }
 
                 configuration = caseDecider(iso, v0, v1, v2, v3);
 
@@ -151,5 +160,12 @@ void HorizontalSliceToContourLineMapper::incrementZPosition(int steps)
 {
     zPosition += steps;
 }
-
+void HorizontalSliceToContourLineMapper::setMagnitudes(float* magnitudeFromFilter)
+{
+    magnitudes = magnitudeFromFilter;
+}
+void HorizontalSliceToContourLineMapper::imageAndMagnitudeSwitch(bool a)
+{
+    magnitude = a;
+}
 
