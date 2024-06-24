@@ -85,8 +85,7 @@ void HorizontalContourLinesRenderer::drawContourLines(QMatrix4x4 mvpMatrix)
     // Issue OpenGL draw commands.
     QOpenGLFunctions *f = QOpenGLContext::currentContext()->functions();
     f->glLineWidth(4);
-    f->glDrawArrays(GL_LINES, 0, contourCrossingPoints.size()); // GL_LINES verbindet Vektore paarenweise, wahrend GL_LINE_STRIP jeden Vektor mit seinen 2 Nachbarn im Array verbindet
-
+    f->glDrawArrays(GL_LINES, 0, contourCrossingPoints.size());
     // Release objects until next render cycle.
     vertexArrayObject.release();
     shaderProgram.release();

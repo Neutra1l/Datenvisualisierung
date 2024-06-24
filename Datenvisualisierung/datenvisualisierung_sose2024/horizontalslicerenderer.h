@@ -17,6 +17,7 @@ public:
     void moveSlice(int steps);
     void setZPosition(int z);
     int getZPosition();
+    void updateZPosition(int steps);
 private:
     void initOpenGLShaders();
     void initBoundingBoxGeometry();

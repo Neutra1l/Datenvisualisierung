@@ -5,6 +5,8 @@
 #include <QOpenGLContext>
 #include <QOpenGLShader>
 #include <QOpenGLTexture>
+
+
 HorizontalSliceRenderer::HorizontalSliceRenderer(): vertexBuffer(QOpenGLBuffer::VertexBuffer) {
     initOpenGLShaders();
     initImageSliceGeometry();
@@ -92,9 +94,10 @@ void HorizontalSliceRenderer::initOpenGLShaders()
 void HorizontalSliceRenderer::initImageSliceGeometry()
 {
     // Vertices of a unit square that represents the image.
+
     const unsigned int numVertices = 4;
 
-    float unitSquareVertices[numVertices][3] = {{0, 0,0}, {1, 0, 0}, {1, 1,0 }, {0, 1, 0}};
+    float unitSquareVertices[numVertices][3] = {{0, 0,0}, {1, 0, 0}, {1, 1,0}, {0, 1, 0}};
 
     // Create vertex buffer and upload vertex data to buffer.
     vertexBuffer.create(); // make sure to destroy in destructor!
