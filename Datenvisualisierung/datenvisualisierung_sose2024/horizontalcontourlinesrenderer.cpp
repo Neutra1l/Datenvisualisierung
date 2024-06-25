@@ -84,7 +84,7 @@ void HorizontalContourLinesRenderer::drawContourLines(QMatrix4x4 mvpMatrix)
 
     // Issue OpenGL draw commands.
     QOpenGLFunctions *f = QOpenGLContext::currentContext()->functions();
-    f->glLineWidth(4);
+    f->glLineWidth(5);
     f->glDrawArrays(GL_LINES, 0, contourCrossingPoints.size());
     // Release objects until next render cycle.
     vertexArrayObject.release();

@@ -6,7 +6,6 @@
 
 QT       += core gui openglwidgets
 
-
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets opengl
 
 TARGET = DataVisualizationSoSe2024

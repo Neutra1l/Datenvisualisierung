@@ -175,6 +175,9 @@ void OpenGLDisplayWidget::keyPressEvent(QKeyEvent *e)
          contourMapper->setDataSlice(sliceFilter->transferDataToMapper(XS,YS), XS, YS);
          contourMapper->setMagnitudes(sliceFilter->transferMagnitudeOfCurrentSliceToMapper(XS,YS));
 
+         sliceRenderer->incrementZPosition(1);
+         sliceRenderer->initImageSliceGeometry();
+
 
         }
 
@@ -192,6 +195,9 @@ void OpenGLDisplayWidget::keyPressEvent(QKeyEvent *e)
             contourMapper->incrementZPosition(-1);
             contourMapper->setDataSlice(sliceFilter->transferDataToMapper(XS,YS), XS, YS);
             contourMapper->setMagnitudes(sliceFilter->transferMagnitudeOfCurrentSliceToMapper(XS,YS));
+
+            sliceRenderer->incrementZPosition(-1);
+            sliceRenderer->initImageSliceGeometry();
 
         }
 
@@ -243,7 +249,7 @@ void OpenGLDisplayWidget::keyPressEvent(QKeyEvent *e)
     }
     else if(e->key() == Qt::Key_Right)
     {
-      time = time + 0.5;
+      time = time + 1;
       flowdatasource->createData(XS,YS,ZS,time);
       flowdatasource->calculateMagnitudeOfWind();
 
@@ -261,7 +267,7 @@ void OpenGLDisplayWidget::keyPressEvent(QKeyEvent *e)
     }
     else if(e->key() == Qt::Key_Left)
     {
-        time = time - 0.5;
+        time = time - 1;
         flowdatasource->createData(XS,YS,ZS,time);
         flowdatasource->calculateMagnitudeOfWind();
 
@@ -342,6 +348,7 @@ void OpenGLDisplayWidget::initVisualizationPipeline()
     //image slice
     sliceRenderer = new HorizontalSliceRenderer();
     sliceRenderer->setMapper(sliceMapper);
+    sliceRenderer->setZPosition(0);
 
     //contour lines
     contourRenderer = new HorizontalContourLinesRenderer();

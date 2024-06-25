@@ -9,9 +9,6 @@ int main(int argc, char *argv[])
     // upon creation of a new "Qt Widgets Application". It creates a single
     // main window into which we can embed the OpenGL display.
 
-    FlowDataSource datasource;
-    datasource.createData(16,16,16,0);
-    datasource.calculateMagnitudeOfWind();
     QApplication a(argc, argv);
     MainWindow w;
     w.show();

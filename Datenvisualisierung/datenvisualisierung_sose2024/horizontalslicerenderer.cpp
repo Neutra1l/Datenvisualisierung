@@ -6,6 +6,7 @@
 #include <QOpenGLShader>
 #include <QOpenGLTexture>
 
+#define zNorm (float)zPosition/16.0
 
 HorizontalSliceRenderer::HorizontalSliceRenderer(): vertexBuffer(QOpenGLBuffer::VertexBuffer) {
     initOpenGLShaders();
@@ -97,7 +98,7 @@ void HorizontalSliceRenderer::initImageSliceGeometry()
 
     const unsigned int numVertices = 4;
 
-    float unitSquareVertices[numVertices][3] = {{0, 0,0}, {1, 0, 0}, {1, 1,0}, {0, 1, 0}};
+    float unitSquareVertices[numVertices][3] = {{0, 0,zNorm}, {1, 0, zNorm}, {1, 1,zNorm}, {0, 1, zNorm}};
 
     // Create vertex buffer and upload vertex data to buffer.
     vertexBuffer.create(); // make sure to destroy in destructor!
@@ -120,6 +121,11 @@ void HorizontalSliceRenderer::initImageSliceGeometry()
         vertexBuffer.release();
     }
 
+}
+
+void HorizontalSliceRenderer::incrementZPosition(int steps)
+{
+    zPosition += steps;
 }
 
 

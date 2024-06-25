@@ -1,6 +1,8 @@
 debug/cartesiangridtohorizontalslicefilter.o
 debug/flowdatasource.o
+debug/horizontalcontourlinesrenderer.o
 debug/horizontalslicerenderer.o
+debug/horizontalslicetocontourlinemapper.o
 debug/horizontalslicetoimagemapper.o
 debug/main.o
 debug/mainwindow.o

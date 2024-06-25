@@ -336,7 +336,7 @@ debug/moc_mainwindow.cpp: mainwindow.h \
 		C:/Qt/6.7.2/mingw_64/include/QtWidgets/qtabwidget.h \
 		debug/moc_predefs.h \
 		C:/Qt/6.7.2/mingw_64/bin/moc.exe
-	C:\Qt\6.7.2\mingw_64\bin\moc.exe $(DEFINES) --include C:/Users/ASUS/Desktop/GitHub/Datenvisualisierung/datenvisualisierung_sose2024/debug/moc_predefs.h -IC:/Qt/6.7.2/mingw_64/mkspecs/win32-g++ -IC:/Users/ASUS/Desktop/GitHub/Datenvisualisierung/datenvisualisierung_sose2024 -IC:/Qt/6.7.2/mingw_64/include -IC:/Qt/6.7.2/mingw_64/include/QtOpenGLWidgets -IC:/Qt/6.7.2/mingw_64/include/QtOpenGL -IC:/Qt/6.7.2/mingw_64/include/QtWidgets -IC:/Qt/6.7.2/mingw_64/include/QtGui -IC:/Qt/6.7.2/mingw_64/include/QtCore -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -IC:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include mainwindow.h -o debug\moc_mainwindow.cpp
+	C:\Qt\6.7.2\mingw_64\bin\moc.exe $(DEFINES) --include C:/Users/ASUS/Desktop/GitHub/DV/Datenvisualisierung/Datenvisualisierung/datenvisualisierung_sose2024/debug/moc_predefs.h -IC:/Qt/6.7.2/mingw_64/mkspecs/win32-g++ -IC:/Users/ASUS/Desktop/GitHub/DV/Datenvisualisierung/Datenvisualisierung/datenvisualisierung_sose2024 -IC:/Qt/6.7.2/mingw_64/include -IC:/Qt/6.7.2/mingw_64/include/QtOpenGLWidgets -IC:/Qt/6.7.2/mingw_64/include/QtOpenGL -IC:/Qt/6.7.2/mingw_64/include/QtWidgets -IC:/Qt/6.7.2/mingw_64/include/QtGui -IC:/Qt/6.7.2/mingw_64/include/QtCore -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -IC:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include mainwindow.h -o debug\moc_mainwindow.cpp
 
 debug/moc_opengldisplaywidget.cpp: opengldisplaywidget.h \
 		C:/Qt/6.7.2/mingw_64/include/QtOpenGLWidgets/QOpenGLWidget \
@@ -560,7 +560,7 @@ debug/moc_opengldisplaywidget.cpp: opengldisplaywidget.h \
 		horizontalcontourlinesrenderer.h \
 		debug/moc_predefs.h \
 		C:/Qt/6.7.2/mingw_64/bin/moc.exe
-	C:\Qt\6.7.2\mingw_64\bin\moc.exe $(DEFINES) --include C:/Users/ASUS/Desktop/GitHub/Datenvisualisierung/datenvisualisierung_sose2024/debug/moc_predefs.h -IC:/Qt/6.7.2/mingw_64/mkspecs/win32-g++ -IC:/Users/ASUS/Desktop/GitHub/Datenvisualisierung/datenvisualisierung_sose2024 -IC:/Qt/6.7.2/mingw_64/include -IC:/Qt/6.7.2/mingw_64/include/QtOpenGLWidgets -IC:/Qt/6.7.2/mingw_64/include/QtOpenGL -IC:/Qt/6.7.2/mingw_64/include/QtWidgets -IC:/Qt/6.7.2/mingw_64/include/QtGui -IC:/Qt/6.7.2/mingw_64/include/QtCore -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -IC:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include opengldisplaywidget.h -o debug\moc_opengldisplaywidget.cpp
+	C:\Qt\6.7.2\mingw_64\bin\moc.exe $(DEFINES) --include C:/Users/ASUS/Desktop/GitHub/DV/Datenvisualisierung/Datenvisualisierung/datenvisualisierung_sose2024/debug/moc_predefs.h -IC:/Qt/6.7.2/mingw_64/mkspecs/win32-g++ -IC:/Users/ASUS/Desktop/GitHub/DV/Datenvisualisierung/Datenvisualisierung/datenvisualisierung_sose2024 -IC:/Qt/6.7.2/mingw_64/include -IC:/Qt/6.7.2/mingw_64/include/QtOpenGLWidgets -IC:/Qt/6.7.2/mingw_64/include/QtOpenGL -IC:/Qt/6.7.2/mingw_64/include/QtWidgets -IC:/Qt/6.7.2/mingw_64/include/QtGui -IC:/Qt/6.7.2/mingw_64/include/QtCore -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -IC:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include opengldisplaywidget.h -o debug\moc_opengldisplaywidget.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -834,6 +834,22 @@ debug/horizontalcontourlinesrenderer.o: horizontalcontourlinesrenderer.cpp horiz
 		C:/Qt/6.7.2/mingw_64/include/QtOpenGL/qopenglvertexarrayobject.h \
 		C:/Qt/6.7.2/mingw_64/include/QtCore/QObject \
 		horizontalslicetocontourlinemapper.h \
+		cartesiangridtohorizontalslicefilter.h \
+		flowdatasource.h \
+		horizontalslicetoimagemapper.h \
+		C:/Qt/6.7.2/mingw_64/include/QtGui/QImage \
+		C:/Qt/6.7.2/mingw_64/include/QtGui/qimage.h \
+		C:/Qt/6.7.2/mingw_64/include/QtGui/qcolor.h \
+		C:/Qt/6.7.2/mingw_64/include/QtGui/qrgb.h \
+		C:/Qt/6.7.2/mingw_64/include/QtGui/qrgba64.h \
+		C:/Qt/6.7.2/mingw_64/include/QtGui/qpaintdevice.h \
+		C:/Qt/6.7.2/mingw_64/include/QtGui/qwindowdefs.h \
+		C:/Qt/6.7.2/mingw_64/include/QtGui/qwindowdefs_win.h \
+		C:/Qt/6.7.2/mingw_64/include/QtGui/qpixelformat.h \
+		C:/Qt/6.7.2/mingw_64/include/QtGui/qtransform.h \
+		C:/Qt/6.7.2/mingw_64/include/QtGui/qpolygon.h \
+		C:/Qt/6.7.2/mingw_64/include/QtGui/qregion.h \
+		C:/Qt/6.7.2/mingw_64/include/QtCore/qline.h \
 		C:/Qt/6.7.2/mingw_64/include/QtCore/QVector \
 		C:/Qt/6.7.2/mingw_64/include/QtCore/qvector.h \
 		C:/Qt/6.7.2/mingw_64/include/QtGui/QVector3D \
@@ -845,8 +861,6 @@ debug/horizontalcontourlinesrenderer.o: horizontalcontourlinesrenderer.cpp horiz
 		C:/Qt/6.7.2/mingw_64/include/QtGui/qsurfaceformat.h \
 		C:/Qt/6.7.2/mingw_64/include/QtCore/qvariant.h \
 		C:/Qt/6.7.2/mingw_64/include/QtGui/qopenglcontext_platform.h \
-		C:/Qt/6.7.2/mingw_64/include/QtGui/qwindowdefs.h \
-		C:/Qt/6.7.2/mingw_64/include/QtGui/qwindowdefs_win.h \
 		C:/Qt/6.7.2/mingw_64/include/QtGui/QOpenGLContext
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\horizontalcontourlinesrenderer.o horizontalcontourlinesrenderer.cpp
 
@@ -1020,32 +1034,31 @@ debug/horizontalslicerenderer.o: horizontalslicerenderer.cpp horizontalslicerend
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\horizontalslicerenderer.o horizontalslicerenderer.cpp
 
 debug/horizontalslicetocontourlinemapper.o: horizontalslicetocontourlinemapper.cpp horizontalslicetocontourlinemapper.h \
-		C:/Qt/6.7.2/mingw_64/include/QtCore/QVector \
-		C:/Qt/6.7.2/mingw_64/include/QtCore/qvector.h \
-		C:/Qt/6.7.2/mingw_64/include/QtCore/qlist.h \
-		C:/Qt/6.7.2/mingw_64/include/QtCore/qarraydatapointer.h \
-		C:/Qt/6.7.2/mingw_64/include/QtCore/qarraydataops.h \
-		C:/Qt/6.7.2/mingw_64/include/QtCore/qarraydata.h \
-		C:/Qt/6.7.2/mingw_64/include/QtCore/qpair.h \
-		C:/Qt/6.7.2/mingw_64/include/QtCore/qcontainerfwd.h \
-		C:/Qt/6.7.2/mingw_64/include/QtCore/qtconfigmacros.h \
+		cartesiangridtohorizontalslicefilter.h \
+		flowdatasource.h \
+		horizontalslicetoimagemapper.h \
+		C:/Qt/6.7.2/mingw_64/include/QtGui/QImage \
+		C:/Qt/6.7.2/mingw_64/include/QtGui/qimage.h \
+		C:/Qt/6.7.2/mingw_64/include/QtGui/qtguiglobal.h \
+		C:/Qt/6.7.2/mingw_64/include/QtCore/qglobal.h \
+		C:/Qt/6.7.2/mingw_64/include/QtCore/qtversionchecks.h \
 		C:/Qt/6.7.2/mingw_64/include/QtCore/qtconfiginclude.h \
 		C:/Qt/6.7.2/mingw_64/include/QtCore/qconfig.h \
 		C:/Qt/6.7.2/mingw_64/include/QtCore/qtcore-config.h \
-		C:/Qt/6.7.2/mingw_64/include/QtCore/qtypes.h \
-		C:/Qt/6.7.2/mingw_64/include/QtCore/qprocessordetection.h \
-		C:/Qt/6.7.2/mingw_64/include/QtCore/qassert.h \
-		C:/Qt/6.7.2/mingw_64/include/QtCore/qcompilerdetection.h \
-		C:/Qt/6.7.2/mingw_64/include/QtCore/qsystemdetection.h \
+		C:/Qt/6.7.2/mingw_64/include/QtCore/qtconfigmacros.h \
 		C:/Qt/6.7.2/mingw_64/include/QtCore/qtcoreexports.h \
+		C:/Qt/6.7.2/mingw_64/include/QtCore/qcompilerdetection.h \
+		C:/Qt/6.7.2/mingw_64/include/QtCore/qprocessordetection.h \
+		C:/Qt/6.7.2/mingw_64/include/QtCore/qsystemdetection.h \
 		C:/Qt/6.7.2/mingw_64/include/QtCore/qtdeprecationmarkers.h \
-		C:/Qt/6.7.2/mingw_64/include/QtCore/qtversionchecks.h \
-		C:/Qt/6.7.2/mingw_64/include/QtCore/qtnoop.h \
-		C:/Qt/6.7.2/mingw_64/include/QtCore/qglobal.h \
 		C:/Qt/6.7.2/mingw_64/include/QtCore/qtpreprocessorsupport.h \
+		C:/Qt/6.7.2/mingw_64/include/QtCore/qassert.h \
+		C:/Qt/6.7.2/mingw_64/include/QtCore/qtnoop.h \
+		C:/Qt/6.7.2/mingw_64/include/QtCore/qtypes.h \
 		C:/Qt/6.7.2/mingw_64/include/QtCore/qtversion.h \
 		C:/Qt/6.7.2/mingw_64/include/QtCore/qtclasshelpermacros.h \
 		C:/Qt/6.7.2/mingw_64/include/QtCore/qtypeinfo.h \
+		C:/Qt/6.7.2/mingw_64/include/QtCore/qcontainerfwd.h \
 		C:/Qt/6.7.2/mingw_64/include/QtCore/qsysinfo.h \
 		C:/Qt/6.7.2/mingw_64/include/QtCore/qlogging.h \
 		C:/Qt/6.7.2/mingw_64/include/QtCore/qflags.h \
@@ -1071,12 +1084,22 @@ debug/horizontalslicetocontourlinemapper.o: horizontalslicetocontourlinemapper.c
 		C:/Qt/6.7.2/mingw_64/include/QtCore/qtresource.h \
 		C:/Qt/6.7.2/mingw_64/include/QtCore/qttranslation.h \
 		C:/Qt/6.7.2/mingw_64/include/QtCore/qversiontagging.h \
+		C:/Qt/6.7.2/mingw_64/include/QtGui/qtgui-config.h \
+		C:/Qt/6.7.2/mingw_64/include/QtGui/qtguiexports.h \
+		C:/Qt/6.7.2/mingw_64/include/QtGui/qcolor.h \
+		C:/Qt/6.7.2/mingw_64/include/QtGui/qrgb.h \
+		C:/Qt/6.7.2/mingw_64/include/QtCore/qnamespace.h \
+		C:/Qt/6.7.2/mingw_64/include/QtCore/qtmetamacros.h \
+		C:/Qt/6.7.2/mingw_64/include/QtCore/qstringlist.h \
+		C:/Qt/6.7.2/mingw_64/include/QtCore/qlist.h \
+		C:/Qt/6.7.2/mingw_64/include/QtCore/qarraydatapointer.h \
+		C:/Qt/6.7.2/mingw_64/include/QtCore/qarraydataops.h \
+		C:/Qt/6.7.2/mingw_64/include/QtCore/qarraydata.h \
+		C:/Qt/6.7.2/mingw_64/include/QtCore/qpair.h \
 		C:/Qt/6.7.2/mingw_64/include/QtCore/qcontainertools_impl.h \
 		C:/Qt/6.7.2/mingw_64/include/QtCore/qxptype_traits.h \
 		C:/Qt/6.7.2/mingw_64/include/QtCore/q20functional.h \
 		C:/Qt/6.7.2/mingw_64/include/QtCore/q20memory.h \
-		C:/Qt/6.7.2/mingw_64/include/QtCore/qnamespace.h \
-		C:/Qt/6.7.2/mingw_64/include/QtCore/qtmetamacros.h \
 		C:/Qt/6.7.2/mingw_64/include/QtCore/qhashfunctions.h \
 		C:/Qt/6.7.2/mingw_64/include/QtCore/qstring.h \
 		C:/Qt/6.7.2/mingw_64/include/QtCore/qchar.h \
@@ -1098,19 +1121,32 @@ debug/horizontalslicetocontourlinemapper.o: horizontalslicetocontourlinemapper.c
 		C:/Qt/6.7.2/mingw_64/include/QtCore/qstringconverter_base.h \
 		C:/Qt/6.7.2/mingw_64/include/QtCore/qiterator.h \
 		C:/Qt/6.7.2/mingw_64/include/QtCore/qbytearraylist.h \
-		C:/Qt/6.7.2/mingw_64/include/QtCore/qstringlist.h \
 		C:/Qt/6.7.2/mingw_64/include/QtCore/qalgorithms.h \
 		C:/Qt/6.7.2/mingw_64/include/QtCore/qstringmatcher.h \
-		C:/Qt/6.7.2/mingw_64/include/QtGui/QVector3D \
-		C:/Qt/6.7.2/mingw_64/include/QtGui/qvectornd.h \
-		C:/Qt/6.7.2/mingw_64/include/QtGui/qtguiglobal.h \
-		C:/Qt/6.7.2/mingw_64/include/QtGui/qtgui-config.h \
-		C:/Qt/6.7.2/mingw_64/include/QtGui/qtguiexports.h \
-		C:/Qt/6.7.2/mingw_64/include/QtCore/qpoint.h \
-		C:/Qt/6.7.2/mingw_64/include/QtCore/q23utility.h \
+		C:/Qt/6.7.2/mingw_64/include/QtGui/qrgba64.h \
+		C:/Qt/6.7.2/mingw_64/include/QtGui/qpaintdevice.h \
+		C:/Qt/6.7.2/mingw_64/include/QtGui/qwindowdefs.h \
+		C:/Qt/6.7.2/mingw_64/include/QtCore/qobjectdefs.h \
+		C:/Qt/6.7.2/mingw_64/include/QtCore/qobjectdefs_impl.h \
+		C:/Qt/6.7.2/mingw_64/include/QtCore/qfunctionaltools_impl.h \
+		C:/Qt/6.7.2/mingw_64/include/QtGui/qwindowdefs_win.h \
 		C:/Qt/6.7.2/mingw_64/include/QtCore/qrect.h \
 		C:/Qt/6.7.2/mingw_64/include/QtCore/qmargins.h \
+		C:/Qt/6.7.2/mingw_64/include/QtCore/q23utility.h \
 		C:/Qt/6.7.2/mingw_64/include/QtCore/qsize.h \
+		C:/Qt/6.7.2/mingw_64/include/QtCore/qpoint.h \
+		C:/Qt/6.7.2/mingw_64/include/QtGui/qpixelformat.h \
+		C:/Qt/6.7.2/mingw_64/include/QtGui/qtransform.h \
+		C:/Qt/6.7.2/mingw_64/include/QtGui/qpolygon.h \
+		C:/Qt/6.7.2/mingw_64/include/QtGui/qregion.h \
+		C:/Qt/6.7.2/mingw_64/include/QtCore/qdatastream.h \
+		C:/Qt/6.7.2/mingw_64/include/QtCore/qscopedpointer.h \
+		C:/Qt/6.7.2/mingw_64/include/QtCore/qiodevicebase.h \
+		C:/Qt/6.7.2/mingw_64/include/QtCore/qline.h \
+		C:/Qt/6.7.2/mingw_64/include/QtCore/QVector \
+		C:/Qt/6.7.2/mingw_64/include/QtCore/qvector.h \
+		C:/Qt/6.7.2/mingw_64/include/QtGui/QVector3D \
+		C:/Qt/6.7.2/mingw_64/include/QtGui/qvectornd.h \
 		C:/Qt/6.7.2/mingw_64/include/QtCore/qmath.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\horizontalslicetocontourlinemapper.o horizontalslicetocontourlinemapper.cpp
 
