@@ -58,6 +58,8 @@ private:
     DataVolumeBoundingBoxRenderer *bboxRenderer;
     HorizontalSliceRenderer *sliceRenderer;
 
+    float time;
+
 
     // ....
 

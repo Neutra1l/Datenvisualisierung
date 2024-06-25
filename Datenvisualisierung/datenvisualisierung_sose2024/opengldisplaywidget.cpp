@@ -31,6 +31,7 @@ OpenGLDisplayWidget::~OpenGLDisplayWidget()
     delete bboxRenderer;
     delete sliceRenderer;
     delete sliceMapper;
+    delete contourMapper;
     delete flowdatasource;
     delete sliceFilter;
 
@@ -245,7 +246,41 @@ void OpenGLDisplayWidget::keyPressEvent(QKeyEvent *e)
     {
       sliceMapper->imageAndMagnitudeSwitch(true);
       contourMapper->imageAndMagnitudeSwitch(true);
+    }
+    else if(e->key() == Qt::Key_Right)
+    {
+      time = time + 0.5;
+      flowdatasource->createData(XS,YS,ZS,time);
+      flowdatasource->calculateMagnitudeOfWind();
 
+      sliceFilter->setDataSource(flowdatasource->getDatenQuelle());
+      sliceFilter->setMagnitude(flowdatasource->getMagnitude());
+
+      sliceMapper->setDataSlice(sliceFilter->transferDataToMapper(XS,YS), XS,YS);
+      sliceMapper->setMagnitude(sliceFilter->transferMagnitudeOfCurrentSliceToMapper(XS,YS));
+      contourMapper->setDataSlice(sliceFilter->transferDataToMapper(XS,YS), XS,YS);
+      contourMapper->setMagnitudes(sliceFilter->transferMagnitudeOfCurrentSliceToMapper(XS,YS));
+
+      sliceRenderer->setMapper(sliceMapper);
+      contourRenderer->setContourMapper(contourMapper);
+
+    }
+    else if(e->key() == Qt::Key_Left)
+    {
+        time = time - 0.5;
+        flowdatasource->createData(XS,YS,ZS,time);
+        flowdatasource->calculateMagnitudeOfWind();
+
+        sliceFilter->setDataSource(flowdatasource->getDatenQuelle());
+        sliceFilter->setMagnitude(flowdatasource->getMagnitude());
+
+        sliceMapper->setDataSlice(sliceFilter->transferDataToMapper(XS,YS), XS,YS);
+        sliceMapper->setMagnitude(sliceFilter->transferMagnitudeOfCurrentSliceToMapper(XS,YS));
+        contourMapper->setDataSlice(sliceFilter->transferDataToMapper(XS,YS), XS,YS);
+        contourMapper->setMagnitudes(sliceFilter->transferMagnitudeOfCurrentSliceToMapper(XS,YS));
+
+        sliceRenderer->setMapper(sliceMapper);
+        contourRenderer->setContourMapper(contourMapper);
 
     }
 
@@ -276,8 +311,9 @@ void OpenGLDisplayWidget::initVisualizationPipeline()
     // Initialize the visualization pipeline:
 
     // Initialize data source(s).
+    time = 0.0;
     flowdatasource = new FlowDataSource();
-    flowdatasource->createData(XS,YS,ZS,0);
+    flowdatasource->createData(XS,YS,ZS,time);
     flowdatasource->calculateMagnitudeOfWind();
 
     // Initialize filter modules.

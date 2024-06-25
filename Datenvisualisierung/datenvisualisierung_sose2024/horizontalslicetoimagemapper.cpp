@@ -9,8 +9,7 @@ HorizontalSliceToImageMapper::HorizontalSliceToImageMapper() {
 
 HorizontalSliceToImageMapper::~HorizontalSliceToImageMapper()
 {
-    std::cout << "Mapper destroyed" << std::endl;
-    std::cout << static_cast<float>(1)/6;
+    std::cout << " Image mapper destroyed" << std::endl;
 }
 QImage HorizontalSliceToImageMapper::mapSliceToImage()
 {

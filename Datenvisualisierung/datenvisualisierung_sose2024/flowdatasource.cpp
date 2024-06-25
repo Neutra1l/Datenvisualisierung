@@ -7,7 +7,7 @@ FlowDataSource::FlowDataSource() {}
 
 FlowDataSource::~FlowDataSource()
 {
-    std::cout << "Hallo" << std::endl;
+    std::cout << "Data source destroyed" << std::endl;
 }
 
 void FlowDataSource::createData(int x, int y, int z, int t)
@@ -60,33 +60,10 @@ void FlowDataSource::calculateMagnitudeOfWind()
         }
     }
 }
-void FlowDataSource::printHighestAndLowestSpeed()
-{
-    float maxSpeed = magnitudes[1];
-    float minSpeed = magnitudes[0];
-    /*
-    for(int i = 0; i<xs*ys*zs; i++)
-    {
-        if(magnitudes[i]<magnitudes[i+1])
-        {
-            maxSpeed = magnitudes[i+1];
-        }
-    }
-    for(int j = 0; j<xs*ys*zs; j++)
-    {
-        if(magnitudes[j] > magnitudes[j+1])
-        {
-            minSpeed = magnitudes[j+1];
-        }
-    }
-    */
-    //std::cout << "Höchste Geschwindigkeit beim Zeitschritt 0 beträgt: "  << maxSpeed <<std::endl;
-    // std::cout << "Kleinste Geschwindigkeit beim Zeitschritt 0 beträgt: "  << minSpeed <<std::endl;
-    std::cout << maxSpeed;
-}
+
 float* FlowDataSource::getDatenQuelle()
 {
-        return dataGrid;
+    return dataGrid;
 }
 float* FlowDataSource::getMagnitude()
 {
