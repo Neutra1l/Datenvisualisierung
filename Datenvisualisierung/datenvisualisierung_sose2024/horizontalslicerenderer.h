@@ -18,6 +18,7 @@ public:
     void setZPosition(int z);
     int getZPosition();
     void updateZPosition(int steps);
+    void incrementZPosition(int steps);
 private:
     void initOpenGLShaders();
     void initBoundingBoxGeometry();

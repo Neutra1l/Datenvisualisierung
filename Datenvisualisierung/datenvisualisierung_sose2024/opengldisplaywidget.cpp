@@ -174,6 +174,9 @@ void OpenGLDisplayWidget::keyPressEvent(QKeyEvent *e)
          contourMapper->setDataSlice(sliceFilter->transferDataToMapper(XS,YS), XS, YS);
          contourMapper->setMagnitudes(sliceFilter->transferMagnitudeOfCurrentSliceToMapper(XS,YS));
 
+         sliceRenderer->incrementZPosition(1);
+         sliceRenderer->initImageSliceGeometry();
+
 
         }
 
@@ -191,6 +194,9 @@ void OpenGLDisplayWidget::keyPressEvent(QKeyEvent *e)
             contourMapper->incrementZPosition(-1);
             contourMapper->setDataSlice(sliceFilter->transferDataToMapper(XS,YS), XS, YS);
             contourMapper->setMagnitudes(sliceFilter->transferMagnitudeOfCurrentSliceToMapper(XS,YS));
+
+            sliceRenderer->incrementZPosition(-1);
+            sliceRenderer->initImageSliceGeometry();
 
         }
 
