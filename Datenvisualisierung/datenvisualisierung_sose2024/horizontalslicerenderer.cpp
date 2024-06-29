@@ -31,14 +31,14 @@ int HorizontalSliceRenderer::getZPosition()
 }
 void HorizontalSliceRenderer:: drawImage(QMatrix4x4 matrix)
 {
-    QImage image = (*imageMapper).mapSliceToImage();
-    //QImage image2 = (*imageMapper).mapMagnitudeToImage();
+    QImage img = (*imageMapper).mapSliceToImage();
+
     //QImage img = (*imageMapper).mapSliceToImage("uhhlogo.png");
 
     QOpenGLTexture texture(QOpenGLTexture::Target2D);
     texture.create();
     texture.setWrapMode(QOpenGLTexture::ClampToEdge);
-    texture.setData(image);
+    texture.setData(img);
 
     const int textureUnit = 0; // select a texture unit
     texture.bind(textureUnit);

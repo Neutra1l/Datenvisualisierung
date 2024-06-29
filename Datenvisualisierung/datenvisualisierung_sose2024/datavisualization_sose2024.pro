@@ -31,6 +31,8 @@ SOURCES += \
     horizontalslicerenderer.cpp \
     horizontalslicetocontourlinemapper.cpp \
     horizontalslicetoimagemapper.cpp \
+    horizontalstreamlinemapper.cpp \
+    horizontalstreamlinerenderer.cpp \
     main.cpp \
     mainwindow.cpp \
     opengldisplaywidget.cpp \
@@ -43,6 +45,8 @@ HEADERS += \
     horizontalslicerenderer.h \
     horizontalslicetocontourlinemapper.h \
     horizontalslicetoimagemapper.h \
+    horizontalstreamlinemapper.h \
+    horizontalstreamlinerenderer.h \
     mainwindow.h \
     opengldisplaywidget.h \
     datavolumeboundingboxrenderer.h
@@ -51,6 +55,8 @@ HEADERS += \
 DISTFILES += \
     lines_fshader.glsl \
     lines_fshader_contour.glsl \
+    lines_fshader_streamline.glsl \
     lines_vshader.glsl \
-    lines_vshader_contour.glsl
+    lines_vshader_contour.glsl \
+    lines_vshader_streamline.glsl
 

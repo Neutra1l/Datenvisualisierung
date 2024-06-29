@@ -4,6 +4,8 @@ release/horizontalcontourlinesrenderer.o
 release/horizontalslicerenderer.o
 release/horizontalslicetocontourlinemapper.o
 release/horizontalslicetoimagemapper.o
+release/horizontalstreamlinemapper.o
+release/horizontalstreamlinerenderer.o
 release/main.o
 release/mainwindow.o
 release/opengldisplaywidget.o

@@ -4,6 +4,8 @@ debug/horizontalcontourlinesrenderer.o
 debug/horizontalslicerenderer.o
 debug/horizontalslicetocontourlinemapper.o
 debug/horizontalslicetoimagemapper.o
+debug/horizontalstreamlinemapper.o
+debug/horizontalstreamlinerenderer.o
 debug/main.o
 debug/mainwindow.o
 debug/opengldisplaywidget.o
