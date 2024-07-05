@@ -59,7 +59,6 @@ QImage HorizontalSliceToImageMapper::mapSliceToImage(QString path)
 }
 void HorizontalSliceToImageMapper::setDataSlice(float* dataFromFilter,int x, int y)
 {
-
     dataSlice = dataFromFilter;
     xs = x;
     ys = y;

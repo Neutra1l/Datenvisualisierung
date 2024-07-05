@@ -54,10 +54,10 @@ void HorizontalSliceRenderer:: drawImage(QMatrix4x4 matrix)
     shaderProgram.setUniformValue("mvpMatrix",matrix);
 
     texture.bind(0);
-     //Issue OpenGL draw commands.
+    //Issue OpenGL draw commands.
     QOpenGLFunctions *f = QOpenGLContext::currentContext()->functions();
     f->glLineWidth(2);
-    f->glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
+    f->glDrawArrays(GL_TRIANGLE_FAN, 0,4 );
 
     // Release objects until next render cycle.
     vertexArrayObject.release();

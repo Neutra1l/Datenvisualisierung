@@ -4,11 +4,11 @@ debug/horizontalcontourlinesrenderer.o
 debug/horizontalslicerenderer.o
 debug/horizontalslicetocontourlinemapper.o
 debug/horizontalslicetoimagemapper.o
-debug/horizontalstreamlinemapper.o
-debug/horizontalstreamlinerenderer.o
 debug/main.o
 debug/mainwindow.o
 debug/opengldisplaywidget.o
 debug/datavolumeboundingboxrenderer.o
+debug/streamlinemapper.o
+debug/streamlinerenderer.o
 debug/moc_mainwindow.o
 debug/moc_opengldisplaywidget.o

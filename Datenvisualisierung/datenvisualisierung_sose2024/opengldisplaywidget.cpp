@@ -34,6 +34,7 @@ OpenGLDisplayWidget::~OpenGLDisplayWidget()
     delete contourMapper;
     delete flowdatasource;
     delete sliceFilter;
+   // delete streamRenderer;
 
 }
 
@@ -99,6 +100,7 @@ void OpenGLDisplayWidget::paintGL()
     bboxRenderer->drawBoundingBox(mvpMatrix);
     sliceRenderer->drawImage(mvpMatrix);
     contourRenderer->drawContourLines(mvpMatrix);
+    streamlineRenderer->drawStreamlines(mvpMatrix);
 
     // ....
 }
@@ -283,7 +285,6 @@ void OpenGLDisplayWidget::keyPressEvent(QKeyEvent *e)
         contourRenderer->setContourMapper(contourMapper);
 
     }
-
     // Redraw OpenGL.
     update();
 }
@@ -353,6 +354,9 @@ void OpenGLDisplayWidget::initVisualizationPipeline()
     //contour lines
     contourRenderer = new HorizontalContourLinesRenderer();
     contourRenderer->setContourMapper(contourMapper);
+
+    //streamlines
+    streamlineRenderer = new StreamlineRenderer();
 
     // ....
 }

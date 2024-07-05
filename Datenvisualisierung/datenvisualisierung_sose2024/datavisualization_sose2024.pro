@@ -31,12 +31,12 @@ SOURCES += \
     horizontalslicerenderer.cpp \
     horizontalslicetocontourlinemapper.cpp \
     horizontalslicetoimagemapper.cpp \
-    horizontalstreamlinemapper.cpp \
-    horizontalstreamlinerenderer.cpp \
     main.cpp \
     mainwindow.cpp \
     opengldisplaywidget.cpp \
-    datavolumeboundingboxrenderer.cpp
+    datavolumeboundingboxrenderer.cpp \
+    streamlinemapper.cpp \
+    streamlinerenderer.cpp
 
 HEADERS += \
     cartesiangridtohorizontalslicefilter.h \
@@ -45,11 +45,11 @@ HEADERS += \
     horizontalslicerenderer.h \
     horizontalslicetocontourlinemapper.h \
     horizontalslicetoimagemapper.h \
-    horizontalstreamlinemapper.h \
-    horizontalstreamlinerenderer.h \
     mainwindow.h \
     opengldisplaywidget.h \
-    datavolumeboundingboxrenderer.h
+    datavolumeboundingboxrenderer.h \
+    streamlinemapper.h \
+    streamlinerenderer.h
 
 
 DISTFILES += \

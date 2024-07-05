@@ -50,7 +50,6 @@ void HorizontalContourLinesRenderer::initOpenGLShaders()
 
 void HorizontalContourLinesRenderer::initContourLinesGeometry()
 {
-
     vertexBuffer.create(); // Make sure to destroy it in the destructor!
 }
 

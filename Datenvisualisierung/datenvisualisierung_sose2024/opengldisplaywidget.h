@@ -9,6 +9,8 @@
 #include "flowdatasource.h"
 #include "horizontalslicetocontourlinemapper.h"
 #include "horizontalcontourlinesrenderer.h"
+#include "streamlinerenderer.h"
+
 
 class OpenGLDisplayWidget : public QOpenGLWidget
 {
@@ -57,6 +59,7 @@ private:
     HorizontalSliceToContourLineMapper *contourMapper;
     DataVolumeBoundingBoxRenderer *bboxRenderer;
     HorizontalSliceRenderer *sliceRenderer;
+    StreamlineRenderer *streamlineRenderer;
 
     float time;
 

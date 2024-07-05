@@ -33,6 +33,11 @@ void CartesianGridToHorizontalSliceFilter::setMagnitude(float* magnitude)
     this->magnitude = magnitude;
 }
 
+float* CartesianGridToHorizontalSliceFilter::transferAllData(int xs,int ys, int zs)
+{
+    return datenQuelle;
+}
+
 float* CartesianGridToHorizontalSliceFilter::transferDataToMapper(int xs, int ys)
 {
 

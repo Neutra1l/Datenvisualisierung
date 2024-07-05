@@ -17,6 +17,7 @@ public:
     void setMagnitude(float *magnitude);
     int getCurrentWindComponent();
     float *transferMagnitudeOfCurrentSliceToMapper(int xs, int ys);
+    float *transferAllData(int xs, int ys, int zs);
 private:
     float* magnitude;
     float* datenQuelle;
