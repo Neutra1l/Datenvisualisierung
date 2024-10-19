@@ -10,6 +10,12 @@ HorizontalSliceToContourLineMapper::~HorizontalSliceToContourLineMapper()
     std::cout << " Contour mapper destroyed" << std::endl;
 }
 
+/**
+ * For each of the data slice, calculate the corresponding segments
+ * according to the 16 cases of the marching square algorithm
+ *
+ * @return contourCrossingPoints all points in each slice where the contour lines go through
+ **/
 QVector<QVector3D> HorizontalSliceToContourLineMapper::mapSliceToContourLineSegments(){
     QVector <QVector3D> contourCrossingPoints;
     QVector3D vector2;
