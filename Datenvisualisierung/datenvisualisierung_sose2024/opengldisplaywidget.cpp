@@ -34,7 +34,7 @@ OpenGLDisplayWidget::~OpenGLDisplayWidget()
     delete contourMapper;
     delete flowdatasource;
     delete sliceFilter;
-   // delete streamRenderer;
+    delete streamlineRenderer;
 
 }
 
@@ -100,8 +100,7 @@ void OpenGLDisplayWidget::paintGL()
     bboxRenderer->drawBoundingBox(mvpMatrix);
     sliceRenderer->drawImage(mvpMatrix);
     contourRenderer->drawContourLines(mvpMatrix);
-    streamlineRenderer->drawStreamlines(mvpMatrix);
-
+    streamlineRenderer->draw(mvpMatrix);
     // ....
 }
 
@@ -262,9 +261,11 @@ void OpenGLDisplayWidget::keyPressEvent(QKeyEvent *e)
       sliceMapper->setMagnitude(sliceFilter->transferMagnitudeOfCurrentSliceToMapper(XS,YS));
       contourMapper->setDataSlice(sliceFilter->transferDataToMapper(XS,YS), XS,YS);
       contourMapper->setMagnitudes(sliceFilter->transferMagnitudeOfCurrentSliceToMapper(XS,YS));
+      streamlineMapper->getData(sliceFilter->transferAllData(XS,YS,ZS),XS,YS,ZS);
 
       sliceRenderer->setMapper(sliceMapper);
       contourRenderer->setContourMapper(contourMapper);
+      streamlineRenderer->setStreamlineMapper(streamlineMapper);
 
     }
     else if(e->key() == Qt::Key_Left)
@@ -280,9 +281,11 @@ void OpenGLDisplayWidget::keyPressEvent(QKeyEvent *e)
         sliceMapper->setMagnitude(sliceFilter->transferMagnitudeOfCurrentSliceToMapper(XS,YS));
         contourMapper->setDataSlice(sliceFilter->transferDataToMapper(XS,YS), XS,YS);
         contourMapper->setMagnitudes(sliceFilter->transferMagnitudeOfCurrentSliceToMapper(XS,YS));
+         streamlineMapper->getData(sliceFilter->transferAllData(XS,YS,ZS),XS,YS,ZS);
 
         sliceRenderer->setMapper(sliceMapper);
         contourRenderer->setContourMapper(contourMapper);
+        streamlineRenderer->setStreamlineMapper(streamlineMapper);
 
     }
     // Redraw OpenGL.
@@ -342,6 +345,10 @@ void OpenGLDisplayWidget::initVisualizationPipeline()
     contourMapper->setIsoValue(isoValues);
     contourMapper->imageAndMagnitudeSwitch(false);
 
+    streamlineMapper = new StreamlineMapper();
+    streamlineMapper->getData(sliceFilter->transferAllData(XS,YS,ZS),XS,YS,ZS);
+    streamlineMapper->setValues(1000, 100);
+
     // Initialize rendering modules.
     //bounding box
     bboxRenderer = new DataVolumeBoundingBoxRenderer();
@@ -357,6 +364,8 @@ void OpenGLDisplayWidget::initVisualizationPipeline()
 
     //streamlines
     streamlineRenderer = new StreamlineRenderer();
+    streamlineRenderer->setStreamlineMapper(streamlineMapper);
+
 
     // ....
 }

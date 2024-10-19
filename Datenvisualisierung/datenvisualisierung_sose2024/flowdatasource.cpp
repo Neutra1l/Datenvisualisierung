@@ -53,7 +53,7 @@ void FlowDataSource::calculateMagnitudeOfWind()
                 float ysquared = pow(yKomponent, 2);
                 float zsquared = pow(zKomponent, 2);
 
-               // *magnitudes++ = sqrt(xsquared+ysquared+zsquared);
+                //*magnitudes++ = sqrt(xsquared+ysquared+zsquared);
                 magnitudes[xs*ys*z+xs*y+x] = sqrt(xsquared+ysquared+zsquared);
             }
 

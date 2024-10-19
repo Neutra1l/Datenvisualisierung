@@ -57,7 +57,7 @@ float* CartesianGridToHorizontalSliceFilter::transferMagnitudeOfCurrentSliceToMa
     float *magnitudeOfCurrentSlice = new float[xs*ys];
     for(int i = 0; i <xs*ys; i++)
     {
-        magnitudeOfCurrentSlice[i] = magnitude[slice*xs*ys+i];
+       magnitudeOfCurrentSlice[i] = magnitude[slice*xs*ys+i];
     }
 
     return magnitudeOfCurrentSlice;

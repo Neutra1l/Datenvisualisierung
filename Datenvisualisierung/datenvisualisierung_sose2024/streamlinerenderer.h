@@ -12,12 +12,18 @@ public:
     void setStreamlineMapper(StreamlineMapper *mapper);
     ~StreamlineRenderer();
     StreamlineRenderer();
+    void setValues(int seeds);
+    void draw(QMatrix4x4 mvpMatrix);
+    void render(QVector<QVector3D> vectors, QMatrix4x4 mvpMatrix);
 private:
     StreamlineMapper *streamlineMapper;
     QOpenGLShaderProgram shaderProgram;
     QOpenGLBuffer vertexBuffer;
     QOpenGLVertexArrayObject vertexArrayObject;
     int zPosition;
+
+    int num_seeds;
+
 
 
     void initOpenGLShaders();

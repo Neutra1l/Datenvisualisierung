@@ -7,6 +7,10 @@ StreamlineRenderer::StreamlineRenderer():vertexBuffer(QOpenGLBuffer::VertexBuffe
     initOpenGLShaders();
     initStreamlineGeometry();
 }
+StreamlineRenderer::~StreamlineRenderer() {
+    vertexBuffer.destroy();
+    std::cout << "Destructor called";
+}
 
 void StreamlineRenderer::initOpenGLShaders()
 {
@@ -43,15 +47,22 @@ void StreamlineRenderer::initStreamlineGeometry()
 }
 
 
-void StreamlineRenderer::drawStreamlines(QMatrix4x4 mvpMatrix)
-{
-    QVector<QVector3D> streamlines;
-    QVector3D v1 = QVector3D(0,0,0);
-    QVector3D v2 = QVector3D(1,1,0);
-    streamlines << v1 << v2;
+void StreamlineRenderer::setValues(int seeds) {
+    num_seeds = seeds;
+}
 
+void StreamlineRenderer::draw(QMatrix4x4 mvpMatrix)
+{
+    QVector<QVector<QVector3D>> vector_list = streamlineMapper->computeStreamlines();
+    for (int i = 0; i<num_seeds; i++) {
+        render(vector_list.at(i), mvpMatrix);
+    }
+}
+
+void StreamlineRenderer::render(QVector<QVector3D> vectors, QMatrix4x4 mvpMatrix) {
+    //std::cout << vectors.size() << std::endl;
     vertexBuffer.bind();
-    vertexBuffer.allocate(streamlines.data(), streamlines.size() * sizeof(QVector3D));
+    vertexBuffer.allocate(vectors.data(), vectors.size() * sizeof(QVector3D));
     vertexBuffer.release();
 
     QOpenGLVertexArrayObject::Binder vaoBinder(&vertexArrayObject);
@@ -75,9 +86,15 @@ void StreamlineRenderer::drawStreamlines(QMatrix4x4 mvpMatrix)
 
     // Issue OpenGL draw commands.
     QOpenGLFunctions *f = QOpenGLContext::currentContext()->functions();
-    f->glLineWidth(2);
-    f->glDrawArrays(GL_LINES, 0, streamlines.size());
+    f->glLineWidth(10);
+    f->glDrawArrays(GL_LINE_STRIP, 0, vectors.size()); // GL_LINES verbindet Vektore paarenweise, wahrend GL_LINE_STRIP jeden Vektor mit seinen 2 Nachbarn im Array verbindet
+
     // Release objects until next render cycle.
     vertexArrayObject.release();
     shaderProgram.release();
+}
+
+void StreamlineRenderer::setStreamlineMapper(StreamlineMapper *streamlineMapper){
+    this->streamlineMapper = streamlineMapper;
+    num_seeds = streamlineMapper->get_num_seeds();
 }

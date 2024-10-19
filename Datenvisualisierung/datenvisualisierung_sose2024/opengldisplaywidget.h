@@ -60,6 +60,7 @@ private:
     DataVolumeBoundingBoxRenderer *bboxRenderer;
     HorizontalSliceRenderer *sliceRenderer;
     StreamlineRenderer *streamlineRenderer;
+    StreamlineMapper *streamlineMapper;
 
     float time;
 
